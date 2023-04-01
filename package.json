@@ -6,7 +6,14 @@
     "dev": "next dev --hostname 0.0.0.0 --port 3900",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "yarn run lint:eslint && yarn run lint:stylelint && yarn run lint:prettier",
+    "fix": "yarn run fix:eslint && yarn run fix:stylelint && yarn run fix:prettier",
+    "lint:eslint": "eslint --ignore-path=.gitignore ./**/*.{js,jsx,ts,tsx}",
+    "fix:eslint": "eslint --ignore-path=.gitignore --fix ./**/*.{js,jsx,ts,tsx}",
+    "lint:stylelint": "stylelint --ignore-path=.gitignore ./**/*.{css,scss}",
+    "fix:stylelint": "stylelint --ignore-path=.gitignore --fix ./**/*.{css,scss}",
+    "lint:prettier": "prettier --ignore-path=.gitignore --loglevel=warn --check .",
+    "fix:prettier": "prettier --ignore-path=.gitignore --loglevel=warn --write ."
   },
   "dependencies": {
     "@types/node": "^18.15.11",
@@ -15,6 +22,18 @@
     "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.60.0",
     "typescript": "^5.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.37.0",
+    "eslint-config-next": "^13.2.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^2.8.7",
+    "stylelint": "^15.3.0",
+    "stylelint-config-css-modules": "^4.2.0",
+    "stylelint-config-recess-order": "^4.0.0",
+    "stylelint-config-standard-scss": "^7.0.1"
   }
 }
