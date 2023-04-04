@@ -1,8 +1,10 @@
 import Head from "next/head"
 
+import styles from "./Home.module.scss"
+
 export default function Home() {
   return (
-    <main>
+    <main className={styles.main}>
       <Head>
         <title>Yu Arasino / Virtual Bishojo Programmer</title>
         <meta
@@ -12,8 +14,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Yu Arasino / Virtual Bishojo Programmer</h1>
-      <p>新篠ゆう / バーチャル美少女プログラマー</p>
+      <h1 className={styles.title}>
+        <span className={styles.name}>Yu Arasino</span>
+        <span className={styles.role}>{"Virtual Bishojo\nProgrammer"}</span>
+      </h1>
     </main>
   )
 }
