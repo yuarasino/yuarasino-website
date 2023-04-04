@@ -26,6 +26,7 @@
 .illust {
   object-fit: cover;
   object-position: top center;
+  animation: zoomOut 1s;
 }
 
 .logo {
@@ -34,6 +35,17 @@
   bottom: 1rem;
   width: 50%;
   height: auto;
+  animation: zoomOut 1s;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(120%);
+  }
+
+  100% {
+    transform: scale(100%);
+  }
 }
 
 .page {
