@@ -1,0 +1,20 @@
+@use "sass:string";
+
+// 色
+$primaryColor: #ecafce;
+$secondaryColor: #83cef7;
+
+// 幅
+$primaryWidth: 64rem;
+$secondaryWidth: 36rem;
+
+// メディアクエリ
+$largeQuery: string.unquote("(min-width: #{$secondaryWidth * 2})");
+$middleQuery: string.unquote("(min-width: #{$primaryWidth})");
+$smallQuery: string.unquote("(min-width: #{$secondaryWidth})");
+
+:export {
+  largeQuery: $largeQuery;
+  middleQuery: $middleQuery;
+  smallQuery: $smallQuery;
+}

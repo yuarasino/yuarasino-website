@@ -1,5 +1,47 @@
+@use "@/styles/variables.module.scss" as *;
+
 .layout {
   width: 100%;
+  height: 100vh;
   font-family: var(--primaryFont);
   font-weight: 600;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: $secondaryColor;
+
+  @media #{$middleQuery} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 50%;
+  }
+}
+
+.illust {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.logo {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 50%;
+  height: auto;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+
+  @media #{$middleQuery} {
+    width: 50%;
+    margin-left: 50%;
+  }
 }
