@@ -31,7 +31,10 @@ const Layout = ({ children }: Props) => {
           className={styles.logo}
           src="/images/logo.png"
           alt="yuarasino logo"
-          sizes={`${variables.middleQuery} 25vw, 50vw`}
+          sizes={`
+            ${variables.middleQuery} 25vw,
+            50vw
+          `}
           width={569}
           height={344}
           priority

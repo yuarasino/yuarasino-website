@@ -1,5 +1,7 @@
 import Head from "next/head"
 
+import News from "@/components/News"
+
 import styles from "./Home.module.scss"
 
 export default function Home() {
@@ -18,6 +20,7 @@ export default function Home() {
         <span className={styles.name}>Yu Arasino</span>
         <span className={styles.role}>{"Virtual Bishojo\nProgrammer"}</span>
       </h1>
+      <News />
     </main>
   )
 }
