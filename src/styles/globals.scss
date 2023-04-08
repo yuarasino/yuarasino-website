@@ -1,9 +1,9 @@
 *,
 *::before,
 *::after {
-  all: unset;
   box-sizing: border-box;
-  display: revert;
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -12,6 +12,15 @@ html {
 
 body {
   line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 img,

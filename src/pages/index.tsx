@@ -1,5 +1,6 @@
 import Head from "next/head"
 
+import Live from "@/components/Live"
 import News from "@/components/News"
 
 import styles from "./Home.module.scss"
@@ -21,6 +22,7 @@ export default function Home() {
         <span className={styles.role}>{"Virtual Bishojo\nProgrammer"}</span>
       </h1>
       <News />
+      <Live />
     </main>
   )
 }

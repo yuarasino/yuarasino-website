@@ -1,0 +1,162 @@
+@use "@/styles/variables.module.scss" as *;
+
+.live {
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  gap: 0 0.0625em;
+  justify-content: center;
+  padding: 2rem 0;
+  font-size: 9vw;
+  color: $primaryColor;
+
+  @media #{$smallQuery} {
+    font-size: 6vw;
+  }
+
+  @media #{$middleQuery} {
+    font-size: 4.5vw;
+  }
+
+  @media #{$largeQuery} {
+    font-size: 3vw;
+  }
+}
+
+.en {
+  display: block;
+  align-self: baseline;
+  font-size: 100%;
+}
+
+.ja {
+  display: block;
+  align-self: baseline;
+  font-size: 50%;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem 0;
+  padding: 2rem 6vw;
+  margin-top: -2rem;
+  list-style: none;
+
+  @media #{$middleQuery} {
+    padding: 2rem 3vw;
+  }
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem 0;
+  align-self: flex-start;
+  width: 16rem;
+  cursor: pointer;
+
+  &:nth-of-type(even) {
+    flex-direction: column;
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  @media #{$smallQuery} {
+    flex-direction: row;
+    gap: 0 1rem;
+    width: 100%;
+
+    &:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  @media #{$middleQuery} {
+    flex-direction: column;
+    gap: 0.25rem 0;
+    width: 16rem;
+
+    &:nth-of-type(even) {
+      flex-direction: column;
+    }
+  }
+
+  @media #{$largeQuery} {
+    flex-direction: row;
+    gap: 0 1rem;
+    width: 100%;
+
+    &:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(#fff, 0.5);
+  opacity: 0;
+  transition: 0.5s;
+  border: 3px solid $primaryColor;
+
+  .item:hover & {
+    opacity: 1;
+  }
+}
+
+.play {
+  font-size: 3rem;
+  color: $primaryColor;
+}
+
+.thumb {
+  position: relative;
+  width: 16rem;
+}
+
+.image {
+  width: 16rem;
+  height: auto;
+}
+
+.desc {
+  align-self: center;
+  width: 16rem;
+  color: $secondaryColor;
+
+  @media #{$smallQuery} {
+    width: calc(100% - 16rem);
+  }
+
+  @media #{$middleQuery} {
+    width: 16rem;
+  }
+
+  @media #{$largeQuery} {
+    width: calc(100% - 16rem);
+  }
+}
+
+.date {
+  font-size: 1rem;
+  color: $metaColor;
+}
+
+.text {
+  font-size: 1.2rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}

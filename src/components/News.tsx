@@ -1,7 +1,6 @@
 import Image from "next/image"
 
 import news from "@/contents/news/news.json"
-import variables from "@/styles/variables.module.scss"
 
 import styles from "./news.module.scss"
 
@@ -19,7 +18,7 @@ const News = () => {
               <Image
                 className={styles.image}
                 src={image}
-                alt={text.replace(/<wbr \/>/, "")}
+                alt={text}
                 width={256}
                 height={144}
               />
