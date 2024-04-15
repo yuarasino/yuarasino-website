@@ -1,6 +1,8 @@
 ---
 import "@fontsource-variable/m-plus-1"
 
+import Hero from "@/components/Hero.astro"
+
 interface Props {
   title: string
   description: string
@@ -20,6 +22,13 @@ const { title, description } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <slot />
+    <div class="flex flex-col lg:flex-row">
+      <div class="flex-1 relative -z-10">
+        <Hero />
+      </div>
+      <div class="flex-1 shadow-xl">
+        <slot />
+      </div>
+    </div>
   </body>
 </html>

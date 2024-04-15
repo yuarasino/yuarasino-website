@@ -51,6 +51,9 @@ export default {
           950: "#3f121c",
         },
       },
+      objectPosition: {
+        "top-4": "50% 1rem",
+      },
     },
   },
   plugins: [containerQueries],

@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets"
+
+import illustImage from "@/assets/yuarasino_illust.png"
+import logoImage from "@/assets/yuarasino_logo.png"
+---
+
+<div
+  class="sticky top-0 h-screen w-full overflow-hidden bg-secondary-300"
+>
+  <Image
+    class="h-full w-full object-cover object-top-4"
+    src={illustImage}
+    alt="新篠ゆうのイラスト"
+  />
+  <Image
+    class="absolute bottom-4 right-4 h-auto w-3/5"
+    src={logoImage}
+    alt="新篠ゆうのロゴ"
+  />
+</div>
