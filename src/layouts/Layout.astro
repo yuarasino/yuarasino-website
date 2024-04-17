@@ -1,7 +1,9 @@
 ---
 import "@fontsource-variable/m-plus-1"
 
-import Hero from "@/components/Hero.astro"
+import Footer from "@/sections/Footer.astro"
+import Header from "@/sections/Header.astro"
+import Hero from "@/sections/Hero.astro"
 
 interface Props {
   title: string
@@ -23,11 +25,13 @@ const { title, description } = Astro.props
   </head>
   <body>
     <div class="flex flex-col lg:flex-row">
-      <div class="flex-1 relative -z-10">
+      <div class="relative -z-10 flex-1">
         <Hero />
       </div>
       <div class="flex-1 shadow-xl">
+        <Header />
         <slot />
+        <Footer />
       </div>
     </div>
   </body>

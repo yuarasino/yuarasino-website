@@ -1,4 +1,10 @@
+import { getIconCollections, iconsPlugin } from "@egoist/tailwindcss-icons"
 import containerQueries from "@tailwindcss/container-queries"
+
+const tailwindIcons = iconsPlugin({
+  // activated by: https://icones.js.org/
+  collections: getIconCollections(["fa6-solid", "fa6-brands"]),
+})
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -56,5 +62,5 @@ export default {
       },
     },
   },
-  plugins: [containerQueries],
+  plugins: [containerQueries, tailwindIcons],
 }
