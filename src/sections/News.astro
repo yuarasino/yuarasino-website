@@ -1,0 +1,27 @@
+---
+interface Frontmatter {
+  date: string
+  title: string
+  category: string
+}
+
+const contents = (await Astro.glob<Frontmatter>("@/content/news/*.md")).sort(
+  (a, b) =>
+    Date.parse(a.frontmatter.date) < Date.parse(b.frontmatter.date) ? 1 : -1,
+)
+---
+
+<section class="mt-8" id="news">
+  <h2 class="border-b-2 border-primary-500 text-6xl text-primary-500">News</h2>
+  <ul>
+    {
+      contents.map((c) => (
+        <li class="mx-4 my-4">
+          <span>{c.frontmatter.date}</span>
+          <span class="ml-2">{c.frontmatter.category}</span>
+          <span class="ml-2">{c.frontmatter.title}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
