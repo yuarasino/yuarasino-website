@@ -1,0 +1,23 @@
+---
+interface Frontmatter {
+  title: string
+  order: number
+}
+
+const contents = (await Astro.glob<Frontmatter>("@/content/works/*.md")).sort(
+  (a, b) => (a.frontmatter.order > b.frontmatter.order ? 1 : -1),
+)
+---
+
+<section id="works">
+  <h2 class="border-b-2 border-primary-500 text-6xl text-primary-500">Works</h2>
+  <ul>
+    {
+      contents.map((item) => (
+        <li class="mx-4 my-4">
+          <span>{item.frontmatter.title}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,14 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import News from "@/sections/News.astro"
+import Works from "@/sections/Works.astro"
 
 const title = "YuArasino WebSite"
 const description = "新篠ゆうのウェブサイト"
 ---
 
 <Layout title={title} description={description}>
-  <main style="height: 100vw;" class="px-4">
+  <main class="px-4">
     <h1 class="text-6xl tracking-wide text-primary-500">{title}</h1>
-    <News />
+    <News class="py-8" />
+    <Works class="py-8" />
   </main>
 </Layout>

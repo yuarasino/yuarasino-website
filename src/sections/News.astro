@@ -11,15 +11,15 @@ const contents = (await Astro.glob<Frontmatter>("@/content/news/*.md")).sort(
 )
 ---
 
-<section class="mt-8" id="news">
+<section id="news">
   <h2 class="border-b-2 border-primary-500 text-6xl text-primary-500">News</h2>
   <ul>
     {
-      contents.map((c) => (
+      contents.map((item) => (
         <li class="mx-4 my-4">
-          <span>{c.frontmatter.date}</span>
-          <span class="ml-2">{c.frontmatter.category}</span>
-          <span class="ml-2">{c.frontmatter.title}</span>
+          <span>{item.frontmatter.date}</span>
+          <span class="ml-2">{item.frontmatter.category}</span>
+          <span class="ml-2">{item.frontmatter.title}</span>
         </li>
       ))
     }
