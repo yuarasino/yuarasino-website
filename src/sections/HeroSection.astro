@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets"
+
+import illust from "@/assets/illust.png"
+import logo from "@/assets/logo.png"
+---
+
+<section id="hero" class="sticky top-0">
+  <div class="h-screen w-full overflow-hidden bg-secondary-300 pt-4 @container">
+    <Image
+      class="h-full w-full object-cover object-top"
+      src={illust}
+      alt="新篠ゆうのイラスト"
+    />
+    <Image
+      class="absolute bottom-4 right-4 h-auto w-2/3 @2xl:w-1/2"
+      src={logo}
+      alt="新篠ゆうのロゴ"
+    />
+  </div>
+</section>

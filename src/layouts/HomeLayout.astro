@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import HeroSection from "@/sections/HeroSection.astro"
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<BaseLayout title={title}>
+  <div class="flex flex-col lg:flex-row">
+    <div class="w-full lg:w-1/2">
+      <HeroSection />
+    </div>
+    <div class="z-10 w-full shadow-lg lg:w-1/2">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
