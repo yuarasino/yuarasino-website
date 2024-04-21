@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content"
+
+import WorksItem from "@/components/WorksItem.astro"
+
+const works = (await getCollection("works", ({ data }) => data.order > 0)).sort(
+  ({ data: data1 }, { data: data2 }) => (data1.order > data2.order ? 1 : -1),
+)
+---
+
+<section id="works" class="my-16 @container">
+  <h2 class="font-ui text-5xl text-primary-500">Works</h2>
+  <p>制作実績</p>
+  <div class="mt-8 grid grid-cols-1 gap-8 @2xl:grid-cols-2">
+    {works.map(({ slug, data }) => <WorksItem slug={slug} data={data} />)}
+  </div>
+</section>

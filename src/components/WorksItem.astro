@@ -1,0 +1,47 @@
+---
+import type { ImageMetadata } from "astro"
+import { Image } from "astro:assets"
+
+interface Props {
+  slug: string
+  data: {
+    title: string
+    thumbnail: ImageMetadata
+    order: number
+  }
+}
+
+const { slug, data } = Astro.props
+---
+
+<a href={`/works/${slug}/`} class="yw-works-item block">
+  <div class="relative overflow-hidden border">
+    <Image src={data.thumbnail} alt={data.title} class="yw-thumbnail" />
+    <div
+      class="yw-cover absolute bottom-0 right-0 flex h-full w-20 items-center justify-center bg-tertiary-500/80"
+    >
+      <span class="font-ui text-white">Detail &gt;</span>
+    </div>
+  </div>
+  <div class="mt-2">{data.title}</div>
+</a>
+
+<style>
+  .yw-thumbnail {
+    transform: scale(100%);
+    transition: transform 0.5s;
+  }
+
+  .yw-works-item:hover .yw-thumbnail {
+    transform: scale(105%);
+  }
+
+  .yw-cover {
+    transition: transform 0.5s;
+    transform: translateX(6rem);
+  }
+
+  .yw-works-item:hover .yw-cover {
+    transform: translateX(0);
+  }
+</style>
