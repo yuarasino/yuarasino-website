@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content"
+
+import WorksItem from "@/components/WorksItem.astro"
+
+const works = await getCollection("works")
+---
+
+<section id="works" class="my-16 @container">
+  <h2 class="font-ui text-5xl text-primary-500">Works</h2>
+  <p>制作実績</p>
+  <div class="mt-8 grid grid-cols-1 gap-8 @2xl:grid-cols-2">
+    {works.map((work) => <WorksItem work={work} />)}
+  </div>
+</section>
