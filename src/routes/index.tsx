@@ -1,9 +1,9 @@
-import { useSignal } from "@preact/signals";
-import { define } from "../utils/define.ts";
-import Counter from "../islands/Counter.tsx";
+import { useSignal } from "@preact/signals"
+import { define } from "../utils/define.ts"
+import Counter from "../islands/Counter.tsx"
 
 export default define.page(function Home() {
-  const count = useSignal(3);
+  const count = useSignal(3)
 
   return (
     <div class="px-4 py-8 mx-auto fresh-gradient">
@@ -23,5 +23,5 @@ export default define.page(function Home() {
         <Counter count={count} />
       </div>
     </div>
-  );
-});
+  )
+})

@@ -1,7 +1,7 @@
-import { createDefine } from "fresh";
+import { createDefine } from "fresh"
 
 export type State = {
-  title?: string;
-};
+  title?: string
+}
 
-export const define = createDefine<State>();
+export const define = createDefine<State>()

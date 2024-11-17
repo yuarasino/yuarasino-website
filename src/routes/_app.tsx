@@ -1,4 +1,4 @@
-import type { PageProps } from "fresh";
+import type { PageProps } from "fresh"
 
 export default function App({ Component }: PageProps) {
   return (
@@ -13,5 +13,5 @@ export default function App({ Component }: PageProps) {
         <Component />
       </body>
     </html>
-  );
+  )
 }

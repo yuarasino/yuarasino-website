@@ -1,13 +1,13 @@
 #!/usr/bin/env -S deno run -A --watch=src/,static/
-import { tailwind } from "@fresh/plugin-tailwind";
-import { Builder } from "fresh/dev";
-import { app } from "./main.ts";
+import { tailwind } from "@fresh/plugin-tailwind"
+import { Builder } from "fresh/dev"
+import { app } from "./main.ts"
 
-const builder = new Builder();
-tailwind(builder, app, {});
+const builder = new Builder()
+tailwind(builder, app, {})
 
 if (Deno.args.includes("build")) {
-  await builder.build(app);
+  await builder.build(app)
 } else {
-  await builder.listen(app);
+  await builder.listen(app)
 }

@@ -2,7 +2,9 @@
   "tasks": {
     "dev": "deno run -A --watch=src/,static/ src/dev.ts",
     "build": "deno run -A src/dev.ts build",
-    "start": "deno run -A src/main.ts"
+    "start": "deno run -A src/main.ts",
+    "lint": "deno lint && deno fmt --check",
+    "fmt": "deno lint --fix && deno fmt"
   },
   "imports": {
     "fresh": "jsr:@fresh/core@^2.0.0-alpha.25",
@@ -30,15 +32,19 @@
       "head"
     ]
   },
+  "exclude": [
+    "**/_fresh/*"
+  ],
   "lint": {
     "rules": {
       "tags": [
-        "fresh",
-        "recommended"
+        "recommended",
+        "fresh"
       ]
     }
   },
-  "exclude": [
-    "**/_fresh/*"
-  ]
+  "fmt": {
+    "semiColons": false,
+    "singleQuote": false
+  }
 }
