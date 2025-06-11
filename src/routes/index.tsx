@@ -1,27 +1,20 @@
-import { useSignal } from "@preact/signals";
+import { page } from "fresh";
+
 import { define } from "../fresh/define.ts";
-import Counter from "../islands/Counter.tsx";
 
-export default define.page(function Home() {
-  const count = useSignal(3);
+export const handler = define.handlers({
+  GET: (ctx) => {
+    ctx.state.title = "yuarasino-website";
+    ctx.state.description = "新篠ゆうのウェブサイト";
+    return page();
+  },
+});
 
+export default define.page<typeof handler>(({ state }) => {
   return (
-    <div class="px-4 py-8 mx-auto fresh-gradient">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <h1 className="text-pink-500">{state.title}</h1>
+      <p className="text-blue-500">{state.description}</p>
+    </main>
   );
 });
