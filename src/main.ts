@@ -1,7 +1,7 @@
 import { App, fsRoutes, staticFiles } from "fresh";
-import { define, type State } from "./utils.ts";
+import { define, type State } from "./utils/define.ts";
 
-export const app = new App<State>();
+export const app = new App<State>({ root: import.meta.url });
 
 app.use(staticFiles());
 
