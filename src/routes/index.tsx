@@ -12,8 +12,8 @@ export const handler = define.handlers({
 export default define.page<typeof handler>(({ state }) => {
   return (
     <main class="min-h-screen">
-      <h1 class="text-pink-500">{state.title}</h1>
-      <p class="text-blue-500">{state.description}</p>
+      <h1 class="font-ui text-pink-500">{state.title}</h1>
+      <p class="font-sans text-blue-500">{state.description}</p>
     </main>
   );
 });
