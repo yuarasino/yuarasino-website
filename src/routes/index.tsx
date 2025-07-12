@@ -1,4 +1,5 @@
 import { page } from "fresh";
+import { Hero } from "../components/sections/Hero.tsx";
 import { define } from "../utils/define.ts";
 
 export const handler = define.handlers({
@@ -12,6 +13,7 @@ export const handler = define.handlers({
 export default define.page<typeof handler>(function Home({ state }) {
   return (
     <main class="min-h-screen">
+      <Hero />
       <h1 class="text-pink-500">{state.title}</h1>
       <p class="text-blue-500">{state.description}</p>
     </main>
