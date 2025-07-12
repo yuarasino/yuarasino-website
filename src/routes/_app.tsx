@@ -1,3 +1,4 @@
+import { Navigator } from "../islands/Navigator.tsx";
 import { define } from "../utils/define.ts";
 
 export default define.page(function App({ Component, state }) {
@@ -25,6 +26,7 @@ export default define.page(function App({ Component, state }) {
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
+        <Navigator />
         <Component />
       </body>
     </html>
