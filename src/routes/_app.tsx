@@ -1,12 +1,13 @@
-import type { PageProps } from "fresh";
+import { define } from "../utils/define.ts";
 
-export default function App({ Component }: PageProps) {
+export default define.page(({ Component, state }) => {
   return (
-    <html>
+    <html lang="ja">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>yuarasino-website</title>
+        <title>{state.title}</title>
+        <meta name="description" content={state.description} />
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
@@ -14,4 +15,4 @@ export default function App({ Component }: PageProps) {
       </body>
     </html>
   );
-}
+});
