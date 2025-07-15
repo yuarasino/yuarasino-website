@@ -21,8 +21,10 @@
   "imports": {
     "@pakornv/fresh-plugin-tailwindcss": "jsr:@pakornv/fresh-plugin-tailwindcss@2.0.0-alpha.1",
     "@preact/signals": "npm:@preact/signals@^2.2.1",
+    "clsx": "npm:clsx@^2.1.1",
     "fresh": "jsr:@fresh/core@^2.0.0-alpha.37",
     "preact": "npm:preact@^10.26.9",
+    "tailwind-merge": "npm:tailwind-merge@^3.3.1",
     "tailwindcss": "npm:tailwindcss@^4.1.11"
   },
   "compilerOptions": {
