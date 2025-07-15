@@ -1,3 +1,4 @@
+import { SiteHeader } from "../components/SiteHeader.tsx";
 import { define } from "../utils/define.ts";
 
 export default define.page(({ Component, state }) => {
@@ -11,6 +12,7 @@ export default define.page(({ Component, state }) => {
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
+        <SiteHeader />
         <Component />
       </body>
     </html>
