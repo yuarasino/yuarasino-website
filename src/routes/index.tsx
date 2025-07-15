@@ -1,6 +1,7 @@
 import { page } from "fresh";
-import { define } from "../utils/define.ts";
 import { SvgIcon } from "../components/SvgIcon.tsx";
+import { HeroImage } from "../components/HeroImage.tsx";
+import { define } from "../utils/define.ts";
 
 export const handler = define.handlers({
   GET: (ctx) => {
@@ -13,6 +14,13 @@ export const handler = define.handlers({
 export default define.page<typeof handler>(({ state }) => {
   return (
     <main class="min-h-screen">
+      <p>
+        <HeroImage
+          class="block"
+          src="/images/illust.webp"
+          alt="新篠ゆうのイラスト"
+        />
+      </p>
       <h1 class="text-pink-500">{state.title}</h1>
       <p class="text-blue-500">{state.description}</p>
       <p>
