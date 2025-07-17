@@ -1,9 +1,9 @@
-import { tailwind } from "@fresh/plugin-tailwind";
 import { Builder } from "fresh/dev";
+import { tailwind } from "@pakornv/fresh-plugin-tailwindcss";
 import { app } from "./main.ts";
 
 const builder = new Builder();
-tailwind(builder, app, {});
+tailwind(builder, app);
 
 if (Deno.args.includes("build")) {
   await builder.build(app);

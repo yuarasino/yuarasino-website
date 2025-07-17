@@ -2,7 +2,7 @@ import { define } from "../utils/fresh.ts";
 
 export default define.page(({ Component, state }) => {
   return (
-    <html lang="ja">
+    <html lang="ja" class="text-slate-900">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
