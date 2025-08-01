@@ -3,8 +3,9 @@ import { define } from "../utils/fresh.ts";
 
 export const handler = define.handlers({
   GET: (ctx) => {
-    ctx.state.title = "yuarasino-website";
-    ctx.state.description = "新篠ゆうのウェブサイト";
+    ctx.state.title = "YuArasino.net";
+    ctx.state.description =
+      "バーチャル美少女プログラマー/麻雀VTuber 新篠ゆうのウェブサイトです。";
     return page();
   },
 });
