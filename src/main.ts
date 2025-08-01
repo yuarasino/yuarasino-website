@@ -1,5 +1,5 @@
 import { App, staticFiles, trailingSlashes } from "fresh";
-import { accessLogger } from "./middlewares/access_logger.ts";
+import { accessLogger } from "./middlewares/accessLogger.ts";
 
 import type { State } from "./utils/fresh.ts";
 
