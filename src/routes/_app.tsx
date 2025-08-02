@@ -1,4 +1,5 @@
 import { define } from "../utils/fresh.ts";
+import { SiteFooter } from "../components/site/SiteFooter.tsx";
 
 export default define.page(({ Component, state }) => {
   return (
@@ -33,6 +34,7 @@ export default define.page(({ Component, state }) => {
       </head>
       <body>
         <Component />
+        <SiteFooter />
       </body>
     </html>
   );
