@@ -1,6 +1,7 @@
 import { page } from "fresh";
 import { define } from "../utils/fresh.ts";
 import { HeroArea } from "../components/index/HeroArea.tsx";
+import { ProfileSection } from "../components/index/ProfileSection.tsx";
 
 export const handler = define.handlers({
   GET: ({ state }) => {
@@ -15,6 +16,7 @@ export default define.page(() => {
     <main>
       <section>
         <HeroArea />
+        <ProfileSection />
       </section>
     </main>
   );

@@ -3,17 +3,15 @@ import { cn } from "../utils/tailwind.ts";
 import type { JSX } from "preact";
 
 export interface HeroImageProps {
-  class?: JSX.IntrinsicElements["div"]["class"];
+  class?: JSX.IntrinsicElements["img"]["class"];
   src: JSX.IntrinsicElements["img"]["src"];
   alt: JSX.IntrinsicElements["img"]["alt"];
-  fetchPriority?: JSX.IntrinsicElements["img"]["fetchPriority"];
 }
 
 export const HeroImage = ({
   class: class_,
   src,
   alt,
-  fetchPriority,
 }: HeroImageProps) => {
   return (
     <img
@@ -24,7 +22,7 @@ export const HeroImage = ({
       )}
       src={src}
       alt={alt}
-      fetchPriority={fetchPriority}
+      fetchPriority="high"
     />
   );
 };

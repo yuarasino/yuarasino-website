@@ -9,3 +9,17 @@
   --font-sans: "Noto Sans", "Noto Sans JP", sans-serif;
   --font-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
 }
+
+.bg-dot-pink-50 {
+  background-image:
+    radial-gradient(
+      var(--color-pink-50) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+    var(--color-pink-50) 2px,
+    transparent 2px
+  );
+  background-size: 32px 32px;
+  background-position: 0px 0px, 16px 16px;
+}
