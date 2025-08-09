@@ -6,7 +6,7 @@ export default define.page(({ Component, state }) => {
     <html
       class={cn(
         "font-light tracking-wider",
-        "text-black/85",
+        "text-slate-900",
         "scroll-smooth",
       )}
       lang="ja"
