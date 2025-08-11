@@ -4,10 +4,9 @@ import { Box } from "../components/Box.tsx";
 import { Icon } from "../components/Icon.tsx";
 
 import type { RefObject } from "preact";
-import type { TextLink } from "../utils/types.ts";
 
 export type MenuType = {
-  textLinks: TextLink[];
+  textLinks: { label: string; href: string }[];
   dialogRef: RefObject<HTMLDialogElement>;
   closeDialog: () => void;
 };

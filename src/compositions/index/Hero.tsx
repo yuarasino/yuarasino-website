@@ -29,8 +29,9 @@ export const Hero = defineComponent(() => {
       >
         <Box
           class={cn(
-            "flex justify-center items-center",
+            "flex justify-center",
             "flex-col lg:flex-row",
+            "items-center lg:items-start",
             "mb-12 gap-y-4",
           )}
         >
@@ -51,7 +52,7 @@ export const Hero = defineComponent(() => {
                 "text-white",
               )}
             >
-              WELCOME&nbsp;TO
+              WELCOME TO
             </p>
           </Box>
           <Box

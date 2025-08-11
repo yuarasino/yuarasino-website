@@ -4,10 +4,8 @@ import { Container } from "../components/Container.tsx";
 import { Box } from "../components/Box.tsx";
 import { Icon } from "../components/Icon.tsx";
 
-import type { IconLink } from "../utils/types.ts";
-
 export const Footer = defineComponent(() => {
-  const iconLinks: IconLink[] = [
+  const iconLinks = [
     {
       src: "/icons/youtube.svg",
       alt: "YouTube",

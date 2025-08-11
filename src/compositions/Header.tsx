@@ -3,10 +3,8 @@ import { cn } from "../utils/tailwind.ts";
 import { Box } from "../components/Box.tsx";
 import { Icon } from "../components/Icon.tsx";
 
-import type { TextLink } from "../utils/types.ts";
-
 export type HeaderProps = {
-  textLinks: TextLink[];
+  textLinks: { label: string; href: string }[];
   showDialog: () => void;
 };
 
