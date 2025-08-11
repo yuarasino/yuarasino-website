@@ -13,7 +13,7 @@ export const Container = defineComponent<ContainerProps>((
   return (
     <div
       class={cn(
-        "mx-auto",
+        "mx-auto px-8",
         "w-full md:w-(--breakpoint-md)",
         "lg:w-(--breakpoint-lg) xl:w-(--breakpoint-xl)",
         class_,

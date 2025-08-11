@@ -80,7 +80,7 @@ export const Hero = defineComponent(() => {
             "flex justify-center",
           )}
         >
-          <Box
+          <div
             class={cn(
               "text-white",
               "drop-shadow-lg drop-shadow-black",
@@ -94,7 +94,7 @@ export const Hero = defineComponent(() => {
               src="/icons/chevron-double-down.svg"
               alt="コンテンツに進む"
             />
-          </Box>
+          </div>
         </Box>
       </Box>
     </div>
