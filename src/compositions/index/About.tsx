@@ -33,6 +33,7 @@ export const About = defineComponent(() => {
         </Box>
         <Box
           class={cn(
+            "flex justify-center",
             "mt-16",
           )}
         >
