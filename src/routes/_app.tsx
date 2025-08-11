@@ -1,8 +1,15 @@
 import { define } from "../utils/fresh.ts";
+import { cn } from "../utils/tailwind.ts";
 
 export default define.page(({ Component, state }) => {
   return (
-    <html lang="ja">
+    <html
+      class={cn(
+        "text-slate-900",
+        "scroll-smooth",
+      )}
+      lang="ja"
+    >
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
