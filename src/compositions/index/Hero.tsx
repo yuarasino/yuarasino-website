@@ -23,7 +23,7 @@ export const Hero = defineComponent(() => {
       </Box>
       <Box
         class={cn(
-          "absolute inset-x-0 bottom-0",
+          "absolute bottom-0 inset-x-0 ",
           "py-8",
         )}
       >

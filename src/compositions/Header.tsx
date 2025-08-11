@@ -5,38 +5,18 @@ import { Icon } from "../components/Icon.tsx";
 
 import type { TextLink } from "../utils/types.ts";
 
-export const Header = defineComponent(() => {
-  const textLinks: TextLink[] = [
-    {
-      label: "PROFILE",
-      href: "/#profile",
-    },
-    {
-      label: "ACTIVITIES",
-      href: "/#activities",
-    },
-    {
-      label: "RESUME",
-      href: "/#resume",
-    },
-    {
-      label: "WORKS",
-      href: "/#works",
-    },
-    {
-      label: "BLOG",
-      href: "/blog",
-    },
-    {
-      label: "INFO",
-      href: "/info",
-    },
-  ];
+export type HeaderProps = {
+  textLinks: TextLink[];
+  showDialog: () => void;
+};
 
+export const Header = defineComponent<HeaderProps>((
+  { textLinks, showDialog },
+) => {
   return (
     <header
       class={cn(
-        "fixed inset-x-0 top-0 z-40",
+        "fixed top-0 inset-x-0 z-40",
       )}
     >
       <Box
@@ -131,6 +111,7 @@ export const Header = defineComponent(() => {
                 "hover:opacity-85",
               )}
               type="button"
+              onClick={showDialog}
             >
               <Icon
                 class={cn(
