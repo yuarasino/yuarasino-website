@@ -1,6 +1,6 @@
-import type { TextLink } from "./types.ts";
+import type { IconLink, TextLink } from "./types.ts";
 
-export const navLinks: TextLink[] = [
+export const navigationLinks: TextLink[] = [
   {
     label: "PROFILE",
     href: "/#profile",
@@ -24,5 +24,23 @@ export const navLinks: TextLink[] = [
   {
     label: "INFO",
     href: "/info",
+  },
+];
+
+export const mediaLinks: IconLink[] = [
+  {
+    src: "/icons/youtube.svg",
+    alt: "YouTube",
+    href: "https://github.com/yuarasino",
+  },
+  {
+    src: "/icons/x-twitter.svg",
+    alt: "X/Twitter",
+    href: "https://x.com/yuarasino",
+  },
+  {
+    src: "/icons/github.svg",
+    alt: "GitHub",
+    href: "https://github.com/yuarasino",
   },
 ];

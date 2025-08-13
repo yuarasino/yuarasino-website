@@ -1,6 +1,6 @@
 import { defineComponent } from "../utils/preact.ts";
 import { cn } from "../utils/tailwind.ts";
-import { navLinks } from "../consts.ts";
+import { navigationLinks } from "../consts.ts";
 import { Arranger } from "../components/Arranger.tsx";
 import { Icon } from "../components/Icon.tsx";
 
@@ -80,9 +80,6 @@ export const Menu = defineComponent<MenuProps>((
                 onClick={closeMenu}
               >
                 <Icon
-                  class={cn(
-                    "size-6",
-                  )}
                   src="/icons/x-mark.svg"
                   alt="メニューを閉じる"
                 />
@@ -102,7 +99,7 @@ export const Menu = defineComponent<MenuProps>((
                 "gap-y-4",
               )}
             >
-              {navLinks.map((
+              {navigationLinks.map((
                 { label, href },
               ) => {
                 return (

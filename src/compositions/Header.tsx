@@ -1,6 +1,6 @@
 import { defineComponent } from "../utils/preact.ts";
 import { cn } from "../utils/tailwind.ts";
-import { navLinks } from "../consts.ts";
+import { navigationLinks } from "../consts.ts";
 import { Arranger } from "../components/Arranger.tsx";
 import { Icon } from "../components/Icon.tsx";
 
@@ -59,7 +59,7 @@ export const Header = defineComponent<HeaderProps>((
                   "flex",
                 )}
               >
-                {navLinks.map((
+                {navigationLinks.map((
                   { label, href },
                 ) => {
                   return (
@@ -117,9 +117,6 @@ export const Header = defineComponent<HeaderProps>((
                 onClick={showMenu}
               >
                 <Icon
-                  class={cn(
-                    "size-6",
-                  )}
                   src="/icons/bars-3.svg"
                   alt="メニューを開く"
                 />
