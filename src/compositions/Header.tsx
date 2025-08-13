@@ -1,39 +1,20 @@
 import { defineComponent } from "../utils/preact.ts";
 import { cn } from "../utils/tailwind.ts";
+import { navLinks } from "../consts.ts";
 import { Arranger } from "../components/Arranger.tsx";
 import { Icon } from "../components/Icon.tsx";
 
-export const Header = defineComponent(() => {
-  const textLinks = [
-    {
-      label: "PROFILE",
-      href: "/#profile",
-    },
-    {
-      label: "ACTIVITIES",
-      href: "/#activities",
-    },
-    {
-      label: "RESUME",
-      href: "/#resume",
-    },
-    {
-      label: "WORKS",
-      href: "/#works",
-    },
-    {
-      label: "BLOG",
-      href: "/blog",
-    },
-    {
-      label: "INFO",
-      href: "/info",
-    },
-  ];
+export type HeaderProps = {
+  showMenu: () => void;
+};
 
+export const Header = defineComponent<HeaderProps>((
+  { showMenu },
+) => {
   return (
     <header
       class={cn(
+        "fixed top-0 inset-x-0 z-40",
         "bg-slate-700",
       )}
     >
@@ -78,7 +59,7 @@ export const Header = defineComponent(() => {
                   "flex",
                 )}
               >
-                {textLinks.map((
+                {navLinks.map((
                   { label, href },
                 ) => {
                   return (
@@ -133,6 +114,7 @@ export const Header = defineComponent(() => {
                   "hover:opacity-75",
                 )}
                 type="button"
+                onClick={showMenu}
               >
                 <Icon
                   class={cn(
