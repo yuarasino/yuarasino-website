@@ -1,3 +1,4 @@
+import { asset } from "fresh/runtime";
 import { define } from "../utils/fresh.ts";
 import { cn } from "../utils/tailwind.ts";
 
@@ -17,6 +18,12 @@ export default define.page(({ Component, state }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{state.title}</title>
         <meta name="description" content={state.description} />
+        <link
+          rel="preload"
+          as="image"
+          href={asset("/images/illust.avif")}
+          type="image/avif"
+        />
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
