@@ -122,6 +122,7 @@ export const Menu = defineComponent<MenuProps>((
                         "hover:opacity-75",
                       )}
                       href={href}
+                      onClick={closeMenu}
                     >
                       {label}
                     </a>
