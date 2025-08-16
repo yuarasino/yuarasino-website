@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans Variable", "Noto Sans JP Variable", sans-serif;
+  --font-sans--font-feature-settings: "palt";
+  --font-mono: "Noto Sans Mono Variable", "Noto Sans JP Variable", monospace;
+  --font-mono--font-feature-settings: normal;
+}
