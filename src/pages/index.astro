@@ -1,22 +1,18 @@
 ---
-import "@fontsource-variable/noto-sans";
-import "@fontsource-variable/noto-sans-mono";
-import "@fontsource-variable/noto-sans-jp";
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 
 const title = "yuarasino-website";
 const description = "新篠ゆうのウェブサイト";
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>yuarasino-website</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-  <body>
-    <h1 class="text-pink-500">{title}</h1>
-    <p>{description}</p>
-  </body>
-</html>
+<Layout
+  {title}
+  {description}
+>
+  <main>
+    <section>
+      <h1 class="text-pink-500">{title}</h1>
+      <p>{description}</p>
+    </section>
+  </main>
+</Layout>
