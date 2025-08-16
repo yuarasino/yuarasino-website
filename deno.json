@@ -8,7 +8,9 @@
   },
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
-    "astro": "npm:astro@^5.13.2"
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.12",
+    "astro": "npm:astro@^5.13.2",
+    "tailwindcss": "npm:tailwindcss@^4.1.12"
   },
   "unstable": [
     "fmt-component"
