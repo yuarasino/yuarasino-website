@@ -1,0 +1,16 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "imports": {
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
+    "astro": "npm:astro@^5.13.2"
+  },
+  "unstable": [
+    "fmt-component"
+  ]
+}
