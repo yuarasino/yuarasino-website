@@ -88,7 +88,7 @@ export const Menu = defineComponent<MenuProps>((
         </Arranger>
         <Arranger
           class={cn(
-            "py-16",
+            "py-8",
           )}
         >
           <nav>
