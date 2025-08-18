@@ -4,11 +4,17 @@ import { Arranger } from "@/components/Arranger.tsx";
 import { Icon } from "@/components/Icon.tsx";
 import { NAV_LINKS, SITE_NAME } from "@/consts.ts";
 
-export const Header = defineComponent(() => {
+export type HeaderProps = {
+  showMenu: () => void;
+};
+
+export const Header = defineComponent<HeaderProps>((
+  { showMenu },
+) => {
   return (
     <header
       class={cn(
-        "fixed top-0 inset-x-0",
+        "fixed top-0 inset-x-0 z-40",
         "bg-slate-700",
       )}
     >
@@ -107,6 +113,7 @@ export const Header = defineComponent(() => {
                   "hover:opacity-85",
                 )}
                 type="button"
+                onClick={showMenu}
               >
                 <Icon
                   src="/icons/menu.svg"

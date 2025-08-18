@@ -1,6 +1,6 @@
 import { define } from "@/utils/fresh.ts";
-import { Header } from "@/compositions/Header.tsx";
-import { cn } from "../utils/tailwind.ts";
+import { Navigator } from "@/islands/Navigator.tsx";
+import { cn } from "@/utils/tailwind.ts";
 
 export default define.layout(({ Component }) => {
   return (
@@ -9,7 +9,7 @@ export default define.layout(({ Component }) => {
         "pt-12",
       )}
     >
-      <Header />
+      <Navigator />
       <Component />
     </div>
   );
