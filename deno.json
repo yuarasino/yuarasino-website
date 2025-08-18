@@ -1,0 +1,20 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "check": "deno fmt --check . && deno lint . && deno check",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "imports": {
+    "astro": "npm:astro@^5.13.2"
+  },
+  "exclude": [
+    ".astro",
+    "dist"
+  ],
+  "unstable": [
+    "fmt-component"
+  ]
+}
