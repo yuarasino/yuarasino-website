@@ -1,6 +1,6 @@
-export const SITE_NAME = "YUARASINO.NET";
+export const siteName = "YUARASINO.NET";
 
-export const NAV_LINKS = [
+export const navLinks = [
   {
     label: "PROFILE",
     href: "/#profile",

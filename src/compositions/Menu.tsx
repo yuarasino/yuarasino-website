@@ -2,7 +2,7 @@ import { defineComponent } from "@/utils/preact.ts";
 import { cn } from "@/utils/tailwind.ts";
 import { Arranger } from "@/components/Arranger.tsx";
 import { Icon } from "@/components/Icon.tsx";
-import { NAV_LINKS, SITE_NAME } from "@/consts.ts";
+import { navLinks, siteName } from "@/consts.ts";
 
 import type { RefObject } from "preact";
 
@@ -54,7 +54,7 @@ export const Menu = defineComponent<MenuProps>((
                 href="/"
                 onClick={closeMenu}
               >
-                {SITE_NAME}
+                {siteName}
               </a>
             </div>
           </Arranger>
@@ -98,7 +98,7 @@ export const Menu = defineComponent<MenuProps>((
                 "gap-y-4",
               )}
             >
-              {NAV_LINKS.map((
+              {navLinks.map((
                 { label, href },
               ) => {
                 return (

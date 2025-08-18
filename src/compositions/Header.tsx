@@ -2,7 +2,7 @@ import { defineComponent } from "@/utils/preact.ts";
 import { cn } from "@/utils/tailwind.ts";
 import { Arranger } from "@/components/Arranger.tsx";
 import { Icon } from "@/components/Icon.tsx";
-import { NAV_LINKS, SITE_NAME } from "@/consts.ts";
+import { navLinks, siteName } from "@/consts.ts";
 
 export type HeaderProps = {
   showMenu: () => void;
@@ -44,7 +44,7 @@ export const Header = defineComponent<HeaderProps>((
                 )}
                 href="/"
               >
-                {SITE_NAME}
+                {siteName}
               </a>
             </div>
           </Arranger>
@@ -59,7 +59,7 @@ export const Header = defineComponent<HeaderProps>((
                   "flex",
                 )}
               >
-                {NAV_LINKS.map((
+                {navLinks.map((
                   { label, href },
                 ) => {
                   return (

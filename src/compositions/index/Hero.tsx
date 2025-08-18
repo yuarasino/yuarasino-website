@@ -2,6 +2,7 @@ import { defineComponent } from "@/utils/preact.ts";
 import { cn } from "@/utils/tailwind.ts";
 import { Arranger } from "@/components/Arranger.tsx";
 import { Icon } from "@/components/Icon.tsx";
+import { siteName } from "@/consts.ts";
 
 export const Hero = defineComponent(() => {
   return (
@@ -76,7 +77,7 @@ export const Hero = defineComponent(() => {
                   "text-white",
                 )}
               >
-                YUARASINO.NET
+                {siteName}
               </h1>
             </Arranger>
           </Arranger>
