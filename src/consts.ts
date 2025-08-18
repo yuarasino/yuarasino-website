@@ -1,28 +1,50 @@
+import type { BlogCategory, BlogTag, NavLink } from "@/types.ts";
+
 export const siteName = "YUARASINO.NET";
 
-export const navLinks = [
+export const navLinks: NavLink[] = [
   {
-    label: "PROFILE",
+    slug: "profile",
+    name: "PROFILE",
     href: "/#profile",
   },
   {
-    label: "ACTIVITIES",
+    slug: "activities",
+    name: "ACTIVITIES",
     href: "/#activities",
   },
   {
-    label: "RESUME",
+    slug: "resume",
+    name: "RESUME",
     href: "/#resume",
   },
   {
-    label: "WORKS",
+    slug: "works",
+    name: "WORKS",
     href: "/#works",
   },
   {
-    label: "BLOG",
+    slug: "blog",
+    name: "BLOG",
     href: "/blog",
   },
   {
-    label: "INFO",
+    slug: "info",
+    name: "INFO",
     href: "/info",
+  },
+];
+
+export const blogCategories: BlogCategory[] = [
+  {
+    slug: "website",
+    name: "ウェブサイト",
+  },
+];
+
+export const blogTags: BlogTag[] = [
+  {
+    slug: "fresh",
+    name: "Fresh",
   },
 ];

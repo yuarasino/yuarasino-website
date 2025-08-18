@@ -99,14 +99,14 @@ export const Menu = defineComponent<MenuProps>((
               )}
             >
               {navLinks.map((
-                { label, href },
+                { slug, name, href },
               ) => {
                 return (
                   <li
                     class={cn(
                       "bg-white",
                     )}
-                    key={label}
+                    key={slug}
                   >
                     <a
                       class={cn(
@@ -123,7 +123,7 @@ export const Menu = defineComponent<MenuProps>((
                       href={href}
                       onClick={closeMenu}
                     >
-                      {label}
+                      {name}
                     </a>
                   </li>
                 );

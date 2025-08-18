@@ -60,14 +60,14 @@ export const Header = defineComponent<HeaderProps>((
                 )}
               >
                 {navLinks.map((
-                  { label, href },
+                  { slug, name, href },
                 ) => {
                   return (
                     <li
                       class={cn(
                         "bg-white",
                       )}
-                      key={label}
+                      key={slug}
                     >
                       <a
                         class={cn(
@@ -83,7 +83,7 @@ export const Header = defineComponent<HeaderProps>((
                         )}
                         href={href}
                       >
-                        {label}
+                        {name}
                       </a>
                     </li>
                   );
