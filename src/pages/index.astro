@@ -1,4 +1,5 @@
 ---
+import Container from "@/components/Container.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/utils/tailwind.ts";
 
@@ -12,8 +13,10 @@ const description = "新篠ゆうのウェブサイト";
 >
   <main>
     <section>
-      <h1 class={cn("text-pink-300")}>{title}</h1>
-      <p class={cn("text-blue-300")}>{description}</p>
+      <Container class={cn("py-16")}>
+        <h1 class={cn("text-pink-300")}>{title}</h1>
+        <p class={cn("text-blue-300")}>{description}</p>
+      </Container>
     </section>
   </main>
 </Layout>

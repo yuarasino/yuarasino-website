@@ -1,0 +1,21 @@
+---
+import Arranger from "@/components/Arranger.astro";
+import { cn } from "@/utils/tailwind";
+
+type Props = {
+  class?: string;
+};
+
+const { class: class_ } = Astro.props;
+---
+
+<Arranger
+  class={cn(
+    "mx-auto px-8",
+    "w-full md:w-(--breakpoint-md)",
+    "lg:w-(--breakpoint-lg) xl:w-(--breakpoint-xl)",
+    class_,
+  )}
+>
+  <slot />
+</Arranger>

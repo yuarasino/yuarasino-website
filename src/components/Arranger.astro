@@ -1,0 +1,17 @@
+---
+import { cn } from "@/utils/tailwind";
+
+type Props = {
+  class?: string;
+};
+
+const { class: class_ } = Astro.props;
+---
+
+<div
+  class={cn(
+    class_,
+  )}
+>
+  <slot />
+</div>
