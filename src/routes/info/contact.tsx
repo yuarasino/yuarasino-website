@@ -6,6 +6,7 @@ export const handler = define.handlers({
   GET: ({ state }) => {
     state.title = `CONTACT | ${siteName}`;
     state.description = "";
+    state.robots = "noindex, nofollow";
     return page();
   },
 });
