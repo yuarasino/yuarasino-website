@@ -1,0 +1,28 @@
+---
+import "@fontsource-variable/noto-sans";
+import "@fontsource-variable/noto-sans-mono";
+import "@fontsource-variable/noto-sans-jp";
+import "@/styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+const generator = Astro.generator;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={generator} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
