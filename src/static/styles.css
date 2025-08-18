@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-sm: initial;
+  --breakpoint-md: 40rem;
+  --breakpoint-lg: 60rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: initial;
   --font-sans: "Noto Sans", "Noto Sans JP", sans-serif;
   --font-sans--font-feature-settings: "palt";
   --font-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
