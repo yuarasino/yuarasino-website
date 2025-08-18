@@ -9,7 +9,11 @@ export const Arranger = defineComponent<ArrangerProps>((
   { class: class_, children },
 ) => {
   return (
-    <div class={cn(class_)}>
+    <div
+      class={cn(
+        class_,
+      )}
+    >
       {children}
     </div>
   );
