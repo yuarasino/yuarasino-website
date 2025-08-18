@@ -1,6 +1,7 @@
 import { page } from "fresh";
 import { define } from "@/utils/fresh.ts";
 import { Hero } from "@/compositions/index/Hero.tsx";
+import { About } from "../compositions/index/About.tsx";
 import { siteName } from "@/consts.ts";
 
 export const handler = define.handlers({
@@ -16,6 +17,7 @@ export default define.page<typeof handler>(() => {
     <main>
       <section>
         <Hero />
+        <About />
       </section>
     </main>
   );
