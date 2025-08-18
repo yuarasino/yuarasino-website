@@ -8,7 +8,11 @@
     "astro": "astro"
   },
   "imports": {
-    "astro": "npm:astro@^5.13.2"
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.12",
+    "astro": "npm:astro@^5.13.2",
+    "clsx": "npm:clsx@^2.1.1",
+    "tailwind-merge": "npm:tailwind-merge@^3.3.1",
+    "tailwindcss": "npm:tailwindcss@^4.1.12"
   },
   "exclude": [
     ".astro",

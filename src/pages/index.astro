@@ -1,4 +1,8 @@
 ---
+import "@/styles/global.css";
+
+import { cn } from "@/utils/tailwind.ts";
+
 const title = "yuarasino-website";
 const description = "新篠ゆうのウェブサイト";
 ---
@@ -13,7 +17,7 @@ const description = "新篠ゆうのウェブサイト";
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <h1>{title}</h1>
-    <p>{description}</p>
+    <h1 class={cn("text-pink-300")}>{title}</h1>
+    <p class={cn("text-blue-300")}>{description}</p>
   </body>
 </html>
