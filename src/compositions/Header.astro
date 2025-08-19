@@ -1,0 +1,123 @@
+---
+import { navLinks, siteName } from "@/consts.ts";
+import menuIcon from "@/assets/icons/menu.svg?url";
+import Arranger from "@/components/Arranger.astro";
+import Icon from "@/components/Icon.astro";
+import { cn } from "@/utils/tailwind";
+---
+
+<header
+  class={cn(
+    "fixed top-0 inset-x-0 z-40",
+    "bg-slate-700",
+  )}
+>
+  <Arranger>
+    <Arranger
+      class={cn(
+        "flex justify-between",
+      )}
+    >
+      <Arranger>
+        <div
+          class={cn(
+            "bg-white",
+          )}
+        >
+          <a
+            class={cn(
+              "flex items-center",
+              "px-4",
+              "h-12",
+              "bg-slate-700",
+              "font-light leading-none",
+              "text-white",
+              "cursor-pointer",
+              "transition-opacity",
+              "hover:opacity-85",
+            )}
+            href="/"
+          >
+            {siteName}
+          </a>
+        </div>
+      </Arranger>
+      <Arranger
+        class={cn(
+          "hidden lg:block",
+        )}
+      >
+        <nav>
+          <ul
+            class={cn(
+              "flex",
+            )}
+          >
+            {
+              navLinks.map((
+                { name, href },
+              ) => {
+                return (
+                <li>
+                  <div
+                    class={cn(
+                      "bg-white",
+                    )}
+                  >
+                    <a
+                      class={cn(
+                        "flex items-center",
+                        "px-4",
+                        "h-12",
+                        "bg-slate-700",
+                        "font-light leading-none",
+                        "text-white",
+                        "cursor-pointer",
+                        "transition-opacity",
+                        "hover:opacity-85",
+                      )}
+                      {href}
+                    >
+                      {name}
+                    </a>
+                  </div>
+                </li>
+              );
+              })
+            }
+          </ul>
+        </nav>
+      </Arranger>
+      <Arranger
+        class={cn(
+          "block lg:hidden",
+        )}
+      >
+        <div
+          class={cn(
+            "bg-white",
+          )}
+        >
+          <button
+            class={cn(
+              "flex items-center",
+              "px-3",
+              "h-12",
+              "bg-slate-700",
+              "text-white",
+              "cursor-pointer",
+              "transition-opacity",
+              "hover:opacity-85",
+            )}
+            type="button"
+          >
+            <Icon
+              src={menuIcon}
+              alt="メニューを開く"
+            />
+          </button>
+        </div>
+      </Arranger>
+    </Arranger>
+  </Arranger>
+</header>

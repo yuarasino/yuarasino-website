@@ -3,6 +3,8 @@ import "@fontsource-variable/noto-sans";
 import "@fontsource-variable/noto-sans-mono";
 import "@fontsource-variable/noto-sans-jp";
 import "@/styles/global.css";
+import Header from "@/compositions/Header.astro";
+import { cn } from "@/utils/tailwind";
 
 type Props = {
   title: string;
@@ -13,7 +15,14 @@ const { title, description } = Astro.props;
 const generator = Astro.generator;
 ---
 
-<html lang="ja">
+<html
+  class={cn(
+    "tracking-wider",
+    "text-slate-700",
+    "scroll-smooth scroll-p-12",
+  )}
+  lang="ja"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -23,6 +32,7 @@ const generator = Astro.generator;
     <meta name="generator" content={generator} />
   </head>
   <body>
+    <Header />
     <slot />
   </body>
 </html>

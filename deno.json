@@ -8,6 +8,7 @@
     "astro": "astro"
   },
   "imports": {
+    "@/": "./src/",
     "@fontsource-variable/noto-sans": "npm:@fontsource-variable/noto-sans@^5.2.7",
     "@fontsource-variable/noto-sans-jp": "npm:@fontsource-variable/noto-sans-jp@^5.2.6",
     "@fontsource-variable/noto-sans-mono": "npm:@fontsource-variable/noto-sans-mono@^5.2.7",
