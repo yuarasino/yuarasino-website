@@ -10,4 +10,5 @@
   --font-sans--font-feature-settings: "palt";
   --font-mono: "Noto Sans Mono Variable", "Noto Sans JP Variable", monospace;
   --font-mono--font-feature-settings: normal;
+  --hero-height: calc(100vh - var(--spacing) * 12);
 }
