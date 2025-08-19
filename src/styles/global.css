@@ -12,3 +12,11 @@
   --font-mono--font-feature-settings: normal;
   --hero-height: calc(100vh - var(--spacing) * 12);
 }
+
+.bg-dot-pink-100 {
+  background-image:
+    radial-gradient(var(--color-pink-100) 2px, transparent 2px),
+    radial-gradient(var(--color-pink-100) 2px, transparent 2px);
+  background-size: 40px 40px;
+  background-position: 0px 0px, 20px 20px;
+}

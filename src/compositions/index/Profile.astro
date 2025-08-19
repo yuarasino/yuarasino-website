@@ -1,0 +1,139 @@
+---
+import { Picture } from "astro:assets";
+import avatarImage from "@/assets/images/avatar.png";
+import face1Image from "@/assets/images/face1.png";
+import face2Image from "@/assets/images/face2.png";
+import face3Image from "@/assets/images/face3.png";
+import face4Image from "@/assets/images/face4.png";
+import Arranger from "@/components/Arranger.astro";
+import Container from "@/components/Container.astro";
+import { cn } from "@/utils/tailwind";
+
+const faceImages = [
+  {
+    src: face1Image,
+    alt: "新篠ゆうの表情差分（頬染め）",
+  },
+  {
+    src: face2Image,
+    alt: "新篠ゆうの表情差分（きらきら目）",
+  },
+  {
+    src: face3Image,
+    alt: "新篠ゆうの表情差分（ぐるぐる目）",
+  },
+  {
+    src: face4Image,
+    alt: "新篠ゆうの表情差分（じと目）",
+  },
+];
+---
+
+<section
+  class={cn(
+    "bg-dot-pink-100",
+  )}
+  id="profile"
+>
+  <Container
+    class={cn(
+      "py-16",
+    )}
+  >
+    <Arranger>
+      <h2
+        class={cn(
+          "text-center",
+        )}
+      >
+        <span
+          class={cn(
+            "text-4xl lg:text-5xl",
+            "text-pink-300",
+          )}
+        >
+          PROFILE
+        </span>
+        <span
+          class={cn(
+            "-ml-[0.5em]",
+            "text-xl lg:text-2xl",
+            "text-slate-400",
+          )}
+        >
+          /プロフィール
+        </span>
+      </h2>
+    </Arranger>
+    <Arranger
+      class={cn(
+        "flex",
+        "flex-col lg:flex-row",
+        "items-center lg:items-start",
+        "mt-16 gap-y-8 gap-x-16",
+      )}
+    >
+      <Arranger
+        class={cn(
+          "flex justify-end",
+          "gap-x-8",
+          "flex-1",
+        )}
+      >
+        <Arranger>
+          <ul
+            class={cn(
+              "flex flex-col",
+              "py-8 gap-y-4",
+            )}
+          >
+            {
+              faceImages.map((
+                { src, alt },
+              ) => {
+                return (
+                <li>
+                  <Picture
+                    class={cn(
+                      "h-auto",
+                      "w-24 md:w-30",
+                      "lg:w-24 xl:w-30",
+                    )}
+                    {src}
+                    {alt}
+                    formats={["avif", "webp"]}
+                    fallbackFormat="png"
+                    loading="lazy"
+                  />
+                </li>
+              );
+              })
+            }
+          </ul>
+        </Arranger>
+        <Arranger>
+          <Picture
+            class={cn(
+              "h-auto",
+              "w-48 md:w-60",
+              "lg:w-48 xl:w-60",
+            )}
+            src={avatarImage}
+            alt="新篠ゆうの立ち絵"
+            formats={["avif", "webp"]}
+            fallbackFormat="png"
+            loading="lazy"
+          />
+        </Arranger>
+      </Arranger>
+      <Arranger
+        class={cn(
+          "flex justify-start",
+          "flex-1",
+        )}
+      >
+        
+      </Arranger>
+    </Arranger>
+  </Container>
+</section>
