@@ -1,5 +1,7 @@
 ---
+import scrollIcon from "@/assets/icons/scroll.svg?url";
 import Container from "@/components/Container.astro";
+import Icon from "@/components/Icon.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cn } from "@/utils/tailwind.ts";
 
@@ -16,6 +18,12 @@ const description = "新篠ゆうのウェブサイト";
       <Container class={cn("py-16")}>
         <h1 class={cn("text-pink-300")}>{title}</h1>
         <p class={cn("text-blue-300")}>{description}</p>
+        <p class={cn("text-slate-300")}>
+          <Icon
+            src={scrollIcon}
+            alt="コンテンツに進む"
+          />
+        </p>
       </Container>
     </section>
   </main>

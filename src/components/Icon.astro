@@ -1,0 +1,26 @@
+---
+import { cn } from "@/utils/tailwind";
+
+type Props = {
+  class?: string;
+  src: string;
+  alt: string;
+};
+
+const { class: class_, src, alt } = Astro.props;
+---
+
+<span
+  class={cn(
+    "inline-block",
+    "size-6",
+    "bg-current",
+    "mask-center mask-no-repeat mask-contain",
+    class_,
+  )}
+  role="img"
+  aria-label={alt}
+  style={{
+    maskImage: `url("${src}")`,
+  }}
+/>
