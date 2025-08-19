@@ -100,6 +100,7 @@ import { cn } from "@/utils/tailwind";
         >
           <button
             class={cn(
+              "menu-show-button",
               "flex items-center",
               "px-3",
               "h-12",
@@ -121,3 +122,16 @@ import { cn } from "@/utils/tailwind";
     </Arranger>
   </Arranger>
 </header>
+
+<script>
+  const menuDialog = document.querySelector<HTMLDialogElement>(
+    ".menu-dialog",
+  );
+  const menuShowButton = document.querySelector<HTMLButtonElement>(
+    ".menu-show-button",
+  );
+
+  menuShowButton?.addEventListener("click", () => {
+    menuDialog?.showModal();
+  });
+</script>

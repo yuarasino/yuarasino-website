@@ -4,6 +4,7 @@ import "@fontsource-variable/noto-sans-mono";
 import "@fontsource-variable/noto-sans-jp";
 import "@/styles/global.css";
 import Header from "@/compositions/Header.astro";
+import Menu from "@/compositions/Menu.astro";
 import { cn } from "@/utils/tailwind";
 
 type Props = {
@@ -33,6 +34,7 @@ const generator = Astro.generator;
   </head>
   <body>
     <Header />
+    <Menu />
     <slot />
   </body>
 </html>
