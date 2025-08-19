@@ -1,0 +1,44 @@
+---
+import Arranger from "@/components/Arranger.astro";
+import Container from "@/components/Container.astro";
+import { cn } from "@/utils/tailwind";
+---
+
+<section>
+  <Container
+    class={cn(
+      "py-16",
+    )}
+  >
+    <Arranger>
+      <h2
+        class={cn(
+          "sr-only",
+        )}
+      >
+        <span>ABOUT</span>
+        <span>/サイトについて</span>
+      </h2>
+    </Arranger>
+    <Arranger>
+      <div
+        class={cn(
+          "space-y-4",
+          "text-xl",
+          "text-center",
+          "break-keep wrap-anywhere whitespace-nowrap",
+        )}
+      >
+        <p>
+          YUARASINO.NET<wbr />（ゆう・あらしの・どっとねっと）<wbr />にようこそ！
+        </p>
+        <p>
+          このサイトは、<wbr />バーチャル美少女プログラマー<wbr />新篠ゆう（あらしのゆう）<wbr />の公式サイトです。
+        </p>
+        <p>
+          VTuberとしての活動・<wbr />プログラマーとしての活動の両面から、<wbr />いろいろな情報を発信します！
+        </p>
+      </div>
+    </Arranger>
+  </Container>
+</section>
