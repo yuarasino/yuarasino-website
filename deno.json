@@ -23,7 +23,11 @@
     "@std/path": "jsr:@std/path@^1.1.2",
     "fresh": "jsr:@fresh/core@^2.0.0-alpha.59",
     "preact": "npm:preact@^10.27.1",
-    "@preact/signals": "npm:@preact/signals@^2.3.1"
+    "@preact/signals": "npm:@preact/signals@^2.3.1",
+    "tailwindcss": "npm:tailwindcss@^4.1.12",
+    "@fresh/plugin-tailwind": "jsr:@fresh/plugin-tailwind@^0.0.1-alpha.9",
+    "clsx": "npm:clsx@^2.1.1",
+    "tailwind-merge": "npm:tailwind-merge@^3.3.1"
   },
   "compilerOptions": {
     "lib": [
