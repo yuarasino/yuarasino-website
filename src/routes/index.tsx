@@ -3,7 +3,8 @@ import { define } from "~/utils/fresh.ts";
 import { cn } from "~/utils/tailwind.ts";
 
 export const handler = define.handlers(({ state }) => {
-  state.title = "yuarasino-website";
+  state.title = "HOME";
+  state.description = "新篠ゆうのウェブサイト";
   return page();
 });
 

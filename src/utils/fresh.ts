@@ -1,7 +1,5 @@
 import { createDefine } from "fresh";
 
-export type State = {
-  title: string;
-};
+import type { State } from "~/types.ts";
 
 export const define = createDefine<State>();
