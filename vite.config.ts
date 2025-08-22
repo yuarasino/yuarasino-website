@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, searchForWorkspaceRoot } from "vite";
 import { fresh } from "@fresh/plugin-vite";
 import tailwind from "@tailwindcss/vite";
 
@@ -8,4 +8,11 @@ export default defineConfig({
     fresh(),
     tailwind(),
   ],
+  server: {
+    fs: {
+      allow: [
+        searchForWorkspaceRoot(Deno.cwd()),
+      ],
+    },
+  },
 });
