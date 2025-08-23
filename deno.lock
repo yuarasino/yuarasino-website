@@ -6,7 +6,6 @@
     "jsr:@deno/loader@~0.3.3": "0.3.5",
     "jsr:@fresh/build-id@1": "1.0.0",
     "jsr:@fresh/core@^2.0.0-alpha.37": "2.0.0-alpha.60",
-    "jsr:@fresh/core@^2.0.0-alpha.60": "2.0.0-alpha.60",
     "jsr:@fresh/plugin-vite@~0.9.2": "0.9.2",
     "jsr:@std/bytes@^1.0.6": "1.0.6",
     "jsr:@std/encoding@1": "1.0.10",
@@ -35,6 +34,7 @@
     "npm:clsx@^2.1.1": "2.1.1",
     "npm:esbuild-wasm@0.25.7": "0.25.7",
     "npm:esbuild@0.25.7": "0.25.7",
+    "npm:esbuild@~0.25.5": "0.25.7",
     "npm:preact-render-to-string@^6.5.11": "6.6.0_preact@10.27.1",
     "npm:preact@^10.27.0": "10.27.1",
     "npm:preact@^10.27.1": "10.27.1",
@@ -76,9 +76,8 @@
         "jsr:@std/semver",
         "jsr:@std/uuid",
         "npm:@opentelemetry/api",
-        "npm:@preact/signals@^2.2.1",
-        "npm:esbuild",
         "npm:esbuild-wasm",
+        "npm:esbuild@0.25.7",
         "npm:preact-render-to-string",
         "npm:preact@^10.27.0"
       ]
@@ -87,7 +86,7 @@
       "integrity": "51e6966ed96653bda2faf9fa9fce70b6503c87b480b55624ca52698d5eb29bc0",
       "dependencies": [
         "jsr:@deno/loader@~0.3.2",
-        "jsr:@fresh/core@^2.0.0-alpha.37",
+        "jsr:@fresh/core",
         "jsr:@std/path@1",
         "npm:@babel/core",
         "npm:@babel/preset-react",
