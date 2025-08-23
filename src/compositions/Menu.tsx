@@ -1,4 +1,4 @@
-import { NAV_ITEMS, SITE_NAME } from "~/consts.ts";
+import { NAV_LINKS, SITE_NAME } from "~/consts.ts";
 import { defineComponent } from "~/utils/preact.ts";
 import { cn } from "~/utils/tailwind.ts";
 import { Layouter } from "~/components/Layouter.tsx";
@@ -99,7 +99,7 @@ export const Menu = defineComponent<MenuProps>((
                 "gap-y-4",
               )}
             >
-              {NAV_ITEMS.map((
+              {NAV_LINKS.map((
                 { slug, name, href },
               ) => {
                 return (
