@@ -5,12 +5,20 @@ import { Layouter } from "~/components/Layouter.tsx";
 import { Icon } from "~/components/Icon.tsx";
 import menuIcon from "~/assets/icons/menu.svg";
 
-export const Header = defineComponent(() => {
+export type HeaderProps = {
+  showMenu: () => void;
+};
+
+export const Header = defineComponent<HeaderProps>((
+  { showMenu },
+) => {
   return (
     <header
       class={cn(
-        "fixed top-0 inset-x-0 z-50",
+        "fixed top-0 inset-x-0 z-40",
         "bg-slate-700",
+        "font-light leading-none",
+        "text-white",
       )}
     >
       <Layouter>
@@ -31,10 +39,8 @@ export const Header = defineComponent(() => {
                   "px-4",
                   "h-12",
                   "bg-slate-700",
-                  "font-light leading-none",
-                  "text-white",
                   "cursor-pointer",
-                  "transition-opacity",
+                  "transition-opacity duration-300",
                   "hover:opacity-85",
                 )}
                 href="/"
@@ -70,10 +76,8 @@ export const Header = defineComponent(() => {
                             "px-4",
                             "h-12",
                             "bg-slate-700",
-                            "font-light leading-none",
-                            "text-white",
                             "cursor-pointer",
-                            "transition-opacity",
+                            "transition-opacity duration-300",
                             "hover:opacity-85",
                           )}
                           href={href}
@@ -103,12 +107,12 @@ export const Header = defineComponent(() => {
                   "px-3",
                   "h-12",
                   "bg-slate-700",
-                  "text-white",
                   "cursor-pointer",
-                  "transition-opacity",
+                  "transition-opacity duration-300",
                   "hover:opacity-85",
                 )}
                 type="button"
+                onClick={showMenu}
               >
                 <Icon
                   src={menuIcon}

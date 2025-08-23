@@ -1,10 +1,10 @@
 import { define } from "~/utils/fresh.ts";
-import { Header } from "~/compositions/Header.tsx";
+import { Navigator } from "~/islands/Navigator.tsx";
 
 export default define.layout(({ Component }) => {
   return (
     <body>
-      <Header />
+      <Navigator />
       <Component />
     </body>
   );
