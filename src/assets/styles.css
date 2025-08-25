@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@plugin "@iconify/tailwind4" {
+  prefixes: "material-symbols-light";
+}
+
 @theme {
   --font-sans: "Noto Sans Variable", "Noto Sans JP Variable", sans-serif;
   --font-sans--font-feature-settings: "palt";

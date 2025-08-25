@@ -10,8 +10,10 @@
   "imports": {
     "~/": "./src/",
     "astro": "npm:astro@^5.13.3",
-    "tailwindcss": "npm:tailwindcss@^4.1.12",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.12",
+    "tailwindcss": "npm:tailwindcss@^4.1.12",
+    "@iconify/tailwind4": "npm:@iconify/tailwind4@^1.0.6",
+    "@iconify/json": "npm:@iconify/json@^2.2.378",
     "clsx": "npm:clsx@^2.1.1",
     "tailwind-merge": "npm:tailwind-merge@^3.3.1",
     "@fontsource-variable/noto-sans-jp": "npm:@fontsource-variable/noto-sans-jp@^5.2.6",
