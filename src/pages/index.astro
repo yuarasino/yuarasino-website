@@ -1,5 +1,6 @@
 ---
 import HomeLayout from "~/layouts/HomeLayout.astro";
+import RespContainer from "~/components/RespContainer.astro";
 import SvgIcon from "~/components/SvgIcon.astro";
 import { cn } from "~/utils/tailwind";
 
@@ -13,14 +14,16 @@ const description = "新篠ゆうのスタジオルーム";
 >
   <main>
     <section>
-      <h1 class={cn("text-pink-500")}>{title}</h1>
-      <p class={cn("text-slate-500")}>
-        <SvgIcon
-          prefix="material-symbols-light"
-          name="keyboard-double-arrow-down"
-          label="コンテンツに進む"
-        />
-      </p>
+      <RespContainer class={cn("py-16")}>
+        <h1 class={cn("text-pink-500")}>{title}</h1>
+        <p class={cn("text-slate-500")}>
+          <SvgIcon
+            prefix="material-symbols-light"
+            name="keyboard-double-arrow-down"
+            label="コンテンツに進む"
+          />
+        </p>
+      </RespContainer>
     </section>
   </main>
 </HomeLayout>
