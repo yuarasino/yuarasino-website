@@ -8,12 +8,13 @@
     "astro": "astro"
   },
   "imports": {
-    "astro": "npm:astro@^5.13.3"
+    "~/": "./src/",
+    "astro": "npm:astro@^5.13.3",
+    "tailwindcss": "npm:tailwindcss@^4.1.12",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.12",
+    "clsx": "npm:clsx@^2.1.1",
+    "tailwind-merge": "npm:tailwind-merge@^3.3.1"
   },
-  "exclude": [
-    "dist"
-  ],
-  "unstable": [
-    "fmt-component"
-  ]
+  "exclude": ["dist"],
+  "unstable": ["fmt-component"]
 }

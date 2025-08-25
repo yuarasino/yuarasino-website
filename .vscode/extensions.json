@@ -2,6 +2,7 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "denoland.vscode-deno",
-    "astro-build.astro-vscode"
+    "astro-build.astro-vscode",
+    "bradlc.vscode-tailwindcss"
   ]
 }

@@ -1,5 +1,6 @@
 ---
-
+import "~/styles/global.css";
+import { cn } from "~/utils/tailwind.ts";
 ---
 
 <html lang="ja">
@@ -11,6 +12,6 @@
     <title>Astro</title>
   </head>
   <body>
-    <h1>Astro</h1>
+    <h1 class={cn("text-pink-500")}>Astro</h1>
   </body>
 </html>
