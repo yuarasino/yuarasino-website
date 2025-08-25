@@ -1,0 +1,50 @@
+---
+type Props = {
+  title: string;
+  description: string;
+  isTop: boolean;
+  siteName: string;
+  openGraph?: {
+    ogType: "website" | "article";
+    ogImage: string;
+    twitterSite: string;
+    twitterCreator: string;
+  };
+  robots?: string;
+};
+
+const {
+  title,
+  description,
+  isTop,
+  siteName,
+  openGraph,
+  robots,
+} = Astro.props;
+
+const metaTitle = isTop ? siteName : `${title} | ${siteName}`;
+---
+
+<Fragment>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{metaTitle}</title>
+  <meta name="description" content={description} />
+  {
+    openGraph && (
+      <Fragment>
+        <meta property="og:type" content={openGraph.ogType} />
+        <meta property="og:url" content={Astro.url.href} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={openGraph.ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={openGraph.twitterSite} />
+        <meta name="twitter:creator" content={openGraph.twitterCreator} />
+      </Fragment>
+    )
+  }
+  {robots && <meta name="robots" content={robots} />}
+  <meta name="generator" content={Astro.generator} />
+</Fragment>
