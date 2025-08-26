@@ -1,5 +1,6 @@
 import { Head } from "fresh/runtime";
 import { define } from "~/utils/typing.ts";
+import { cn } from "~/utils/styling.ts";
 
 export default define.page(() => {
   return (
@@ -9,7 +10,7 @@ export default define.page(() => {
       </Head>
       <main>
         <section>
-          <h1>yuarasino-website</h1>
+          <h1 class={cn("text-pink-500")}>yuarasino-website</h1>
         </section>
       </main>
     </>
