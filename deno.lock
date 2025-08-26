@@ -24,6 +24,9 @@
     "jsr:@std/uuid@^1.0.7": "1.0.9",
     "npm:@babel/core@^7.28.0": "7.28.3",
     "npm:@babel/preset-react@^7.27.1": "7.27.1_@babel+core@7.28.3",
+    "npm:@fontsource-variable/noto-sans-jp@^5.2.6": "5.2.6",
+    "npm:@fontsource-variable/noto-sans-mono@^5.2.7": "5.2.7",
+    "npm:@fontsource-variable/noto-sans@^5.2.7": "5.2.7",
     "npm:@opentelemetry/api@^1.9.0": "1.9.0",
     "npm:@preact/signals@^2.2.1": "2.3.1_preact@10.27.1",
     "npm:@preact/signals@^2.3.1": "2.3.1_preact@10.27.1",
@@ -32,6 +35,7 @@
     "npm:clsx@^2.1.1": "2.1.1",
     "npm:esbuild-wasm@0.25.7": "0.25.7",
     "npm:esbuild@0.25.7": "0.25.7",
+    "npm:esbuild@~0.25.5": "0.25.7",
     "npm:preact-render-to-string@^6.5.11": "6.6.0_preact@10.27.1",
     "npm:preact@^10.27.0": "10.27.1",
     "npm:preact@^10.27.1": "10.27.1",
@@ -74,8 +78,8 @@
         "jsr:@std/uuid",
         "npm:@opentelemetry/api",
         "npm:@preact/signals@^2.2.1",
-        "npm:esbuild",
         "npm:esbuild-wasm",
+        "npm:esbuild@0.25.7",
         "npm:preact-render-to-string",
         "npm:preact@^10.27.0"
       ]
@@ -607,6 +611,15 @@
       "integrity": "sha512-PPOl1mi6lpLNQxnGoyAfschAodRFYXJ+9fs6WHXz7CSWKbOqiMZsubC+BQsVKuul+3vKLuwTHsS2c2y9EoKwxQ==",
       "os": ["win32"],
       "cpu": ["x64"]
+    },
+    "@fontsource-variable/noto-sans-jp@5.2.6": {
+      "integrity": "sha512-YjN8UF1hX8ZFkYx95NMz8XeojsCIF5dGPu1htoWkbXyTZj3Z29cxDT8glaT/cOg1BstyOlmtvNC8crPF5Csj/w=="
+    },
+    "@fontsource-variable/noto-sans-mono@5.2.7": {
+      "integrity": "sha512-qUqv/hB0linfL0IyDrqmkco3TcTunpdGgjvzuSfLPOYqcLxbc2zsMUhpyRPpUxjZbv6zvBGpoVcdh1Od5JxLrQ=="
+    },
+    "@fontsource-variable/noto-sans@5.2.7": {
+      "integrity": "sha512-VaA+clV7xTOx+pSOdyjr9nR7khjrJGr7ZHs2KXlx+AqLyG/SUVBadNwauCH0rvF/eZkZr67neNxdKMOLtVxweg=="
     },
     "@isaacs/fs-minipass@4.0.1": {
       "integrity": "sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==",
@@ -1295,6 +1308,9 @@
     "dependencies": [
       "jsr:@fresh/core@^2.0.0-alpha.63",
       "jsr:@fresh/plugin-vite@~0.9.5",
+      "npm:@fontsource-variable/noto-sans-jp@^5.2.6",
+      "npm:@fontsource-variable/noto-sans-mono@^5.2.7",
+      "npm:@fontsource-variable/noto-sans@^5.2.7",
       "npm:@preact/signals@^2.3.1",
       "npm:@tailwindcss/vite@^4.1.12",
       "npm:clsx@^2.1.1",
