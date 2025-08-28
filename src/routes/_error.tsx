@@ -1,23 +1,28 @@
 import { HttpError } from "fresh";
 import { Head } from "fresh/runtime";
 import { define } from "~/utils/typing.ts";
-import { cn } from "~/utils/styling.ts";
-import { Container } from "~/components/Container.tsx";
+import { ErrorArea } from "~/compositions/error/ErrorArea.tsx";
+import { GameSection } from "~/compositions/error/GameSection.tsx";
 
 export default define.page(({ error }) => {
   const is404 = error instanceof HttpError && error.status === 404;
-  const pageTitle = is404 ? "404 Not Found" : "500 Internal Server Error";
+  const title = is404 ? "404 Not Found" : "500 Internal Server Error";
+  const description = is404
+    ? "ページが見つかりませんでした。"
+    : "ページが表示できませんでした。";
 
   return (
     <>
       <Head>
-        <title>{pageTitle} | yuarasino-website</title>
+        <title>{title} | yuarasino-website</title>
       </Head>
       <main>
         <section>
-          <Container class={cn("py-16")}>
-            <h1>{pageTitle}</h1>
-          </Container>
+          {is404 && <GameSection />}
+          <ErrorArea
+            title={title}
+            description={description}
+          />
         </section>
       </main>
     </>
