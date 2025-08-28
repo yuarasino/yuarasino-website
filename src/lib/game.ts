@@ -121,6 +121,7 @@ class Player {
   srcH = 100;
   dstW = 35;
   dstH = 50;
+  vecG = 10;
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
   img: HTMLImageElement;
@@ -141,9 +142,11 @@ class Player {
     this.imgRate = 0.1;
     this.imgT = 0;
     this.posX = 20;
-    this.posY = canvas.height - this.dstH;
+    this.posY = this.canvas.height - this.dstH;
     this.vecX = 0;
     this.vecY = 0;
+    globalThis.addEventListener("keydown", this.onKeyDown.bind(this));
+    globalThis.addEventListener("click", this.onClick.bind(this));
   }
 
   update(deltaT: number) {
@@ -153,7 +156,14 @@ class Player {
       this.imgT = 0;
     }
     this.posX += this.vecX * deltaT;
-    this.posY += this.vecY * deltaT;
+
+    if (this.posY >= this.canvas.height - this.dstH) {
+      this.posY = this.canvas.height - this.dstH;
+      this.vecY = 0;
+    } else {
+      this.vecY += this.vecG;
+      this.posY += this.vecY * deltaT;
+    }
   }
 
   draw() {
@@ -168,5 +178,22 @@ class Player {
       this.dstW,
       this.dstH,
     );
+  }
+
+  jump() {
+    if (this.posY >= this.canvas.height - this.dstH) {
+      this.vecY = -250;
+      this.posY -= 1;
+    }
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    if (event.code === "Space") {
+      this.jump();
+    }
+  }
+
+  onClick() {
+    this.jump();
   }
 }

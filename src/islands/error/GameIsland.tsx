@@ -12,7 +12,7 @@ export const GameIsland = defineComponent(() => {
   return (
     <canvas
       class={cn(
-        "h-40 w-full max-w-150",
+        "h-[150px] w-full max-w-[600px]",
       )}
       id="game"
     />
