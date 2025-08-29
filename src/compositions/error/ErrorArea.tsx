@@ -13,35 +13,37 @@ export const ErrorArea = defineComponent<Props>((
 ) => {
   return (
     <div>
-      <Container>
+      <Container
+        class={cn(
+          "py-16",
+        )}
+      >
         <Arranger
           class={cn(
             "flex justify-center",
           )}
         >
-          <h1
+          <div
             class={cn(
               "w-full max-w-[600px]",
-              "text-2xl",
             )}
           >
-            {title}
-          </h1>
-        </Arranger>
-        <Arranger
-          class={cn(
-            "flex justify-center",
-            "mt-4",
-          )}
-        >
-          <p
-            class={cn(
-              "w-full max-w-[600px]",
-              "text-slate-500",
-            )}
-          >
-            {description}
-          </p>
+            <h1
+              class={cn(
+                "text-2xl",
+              )}
+            >
+              {title}
+            </h1>
+            <p
+              class={cn(
+                "mt-4",
+                "text-slate-500",
+              )}
+            >
+              {description}
+            </p>
+          </div>
         </Arranger>
       </Container>
     </div>

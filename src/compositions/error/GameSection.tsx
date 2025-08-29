@@ -1,5 +1,6 @@
 import { defineComponent } from "~/utils/typing.ts";
 import { cn } from "~/utils/styling.ts";
+import { GameIsland } from "~/islands/error/GameIsland.tsx";
 import { Container } from "~/components/Container.tsx";
 import { Arranger } from "~/components/Arranger.tsx";
 
@@ -25,11 +26,7 @@ export const GameSection = defineComponent(() => {
             "flex justify-center",
           )}
         >
-          <canvas
-            class={cn(
-              "h-[150px] w-full max-w-[600px]",
-            )}
-          />
+          <GameIsland />
         </Arranger>
       </Container>
     </section>
