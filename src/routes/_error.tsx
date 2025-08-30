@@ -1,8 +1,8 @@
 import { HttpError } from "fresh";
 import { Head } from "fresh/runtime";
 import { SITE_TITLE } from "~/consts.ts";
+import { GameSectionIsland } from "../islands/error/GameSectionIslands.tsx";
 import { ErrorArea } from "~/compositions/error/ErrorArea.tsx";
-import { GameSection } from "~/compositions/error/GameSection.tsx";
 import { define } from "~/utils/typing.ts";
 
 export default define.page(({ error }) => {
@@ -19,7 +19,7 @@ export default define.page(({ error }) => {
       </Head>
       <main>
         <section>
-          <GameSection />
+          <GameSectionIsland />
           <ErrorArea
             title={title}
             description={description}
