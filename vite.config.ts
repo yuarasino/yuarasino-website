@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { fresh } from "@fresh/plugin-vite";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
@@ -9,5 +10,6 @@ export default defineConfig({
       routeDir: "src/routes",
       islandsDir: "src/islands",
     }),
+    tailwindcss(),
   ],
 });
