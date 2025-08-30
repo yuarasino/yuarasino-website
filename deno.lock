@@ -37,6 +37,7 @@
     "npm:clsx@^2.1.1": "2.1.1",
     "npm:esbuild-wasm@0.25.7": "0.25.7",
     "npm:esbuild@0.25.7": "0.25.7",
+    "npm:esbuild@~0.25.5": "0.25.7",
     "npm:preact-render-to-string@^6.5.11": "6.6.0_preact@10.27.1",
     "npm:preact@^10.27.0": "10.27.1",
     "npm:preact@^10.27.1": "10.27.1",
@@ -79,8 +80,8 @@
         "jsr:@std/uuid",
         "npm:@opentelemetry/api",
         "npm:@preact/signals@^2.2.1",
-        "npm:esbuild",
         "npm:esbuild-wasm",
+        "npm:esbuild@0.25.7",
         "npm:preact-render-to-string",
         "npm:preact@^10.27.0"
       ]
