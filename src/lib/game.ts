@@ -1,4 +1,5 @@
 import groundImage from "~/assets/game/ground.png";
+import playerImage from "~/assets/game/player.png";
 
 export const runGame = async (canvasId: string) => {
   const game = new Game(canvasId);
@@ -15,6 +16,7 @@ class Game {
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
   ground: Ground;
+  player: Player;
   isRunnning: boolean;
   lastTimestamp: number;
   deltaTime: number;
@@ -33,13 +35,14 @@ class Game {
     this.context = context;
 
     this.ground = new Ground(this.canvas, this.context);
+    this.player = new Player(this.canvas, this.context);
 
     this.isRunnning = false;
     this.lastTimestamp = 0;
     this.deltaTime = 0;
     this.speedRate = this.INITIAL_SPEED_RATE;
 
-    this.canvas.addEventListener("resize", this.resize);
+    globalThis.addEventListener("resize", this.resize);
   }
 
   async run() {
@@ -51,7 +54,11 @@ class Game {
       this.handleSpace.bind(this),
     );
     globalThis.addEventListener(
-      "click",
+      "mousedown",
+      this.handleClick.bind(this),
+    );
+    globalThis.addEventListener(
+      "touchstart",
       this.handleClick.bind(this),
     );
   }
@@ -75,7 +82,11 @@ class Game {
       this.handleSpace.bind(this),
     );
     globalThis.removeEventListener(
-      "click",
+      "mousedown",
+      this.handleClick.bind(this),
+    );
+    globalThis.removeEventListener(
+      "touchstart",
       this.handleClick.bind(this),
     );
   }
@@ -83,11 +94,13 @@ class Game {
   update() {
     this.speedRate += this.SPEED_RATE_INCREMENT * this.deltaTime;
     this.ground.update(this.deltaTime, this.speedRate);
+    this.player.update(this.deltaTime, this.speedRate);
   }
 
   draw() {
     this.clear();
     this.ground.draw();
+    this.player.draw();
   }
 
   clear() {
@@ -105,6 +118,7 @@ class Game {
   }
 
   jump() {
+    this.player.jump();
   }
 
   handleSpace(event: KeyboardEvent) {
@@ -176,5 +190,79 @@ class Ground {
       this.SIZE_WIDTH,
       this.SIZE_HEIGHT,
     );
+  }
+}
+
+class Player {
+  IMAGE_WIDTH: number = 70;
+  IMAGE_HEIGHT: number = 100;
+  IMAGE_FRAME: number = 0.2;
+  SIZE_WIDTH: number = 35;
+  SIZE_HEIGHT: number = 50;
+  JUMP_VELOCITY_Y: number = -200;
+  GRAVITY_VELOCITY_Y: number = 10;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  image: HTMLImageElement;
+  imageTimer: number;
+  imageIndex: number;
+  positionX: number;
+  positionY: number;
+  velocityY: number;
+
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    this.canvas = canvas;
+    this.context = context;
+
+    this.image = new Image();
+    this.image.src = playerImage;
+    this.imageTimer = 0;
+    this.imageIndex = 0;
+
+    this.positionX = 20;
+    this.positionY = this.canvas.height - this.SIZE_HEIGHT;
+    this.velocityY = 0;
+  }
+
+  update(deltaTime: number, speedRate: number) {
+    if (!this.collidesWithGround()) {
+      this.velocityY += this.GRAVITY_VELOCITY_Y;
+    }
+    this.positionY += this.velocityY * deltaTime * speedRate;
+    if (this.collidesWithGround()) {
+      this.positionY = this.canvas.height - this.SIZE_HEIGHT;
+      this.velocityY = 0;
+    }
+
+    this.imageTimer += deltaTime * speedRate;
+    if (this.imageTimer >= this.IMAGE_FRAME) {
+      this.imageIndex = (this.imageIndex + 1) % 4;
+      this.imageTimer = 0;
+    }
+  }
+
+  draw() {
+    this.context.drawImage(
+      this.image,
+      this.IMAGE_WIDTH * this.imageIndex,
+      0,
+      this.IMAGE_WIDTH,
+      this.IMAGE_HEIGHT,
+      this.positionX,
+      this.positionY,
+      this.SIZE_WIDTH,
+      this.SIZE_HEIGHT,
+    );
+  }
+
+  jump() {
+    if (!this.collidesWithGround()) {
+      return;
+    }
+    this.velocityY = this.JUMP_VELOCITY_Y;
+  }
+
+  collidesWithGround() {
+    return this.positionY >= this.canvas.height - this.SIZE_HEIGHT;
   }
 }
