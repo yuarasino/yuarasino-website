@@ -1,5 +1,8 @@
 import groundImage from "~/assets/game/ground.png";
 import playerImage from "~/assets/game/player.png";
+import cactus1Image from "~/assets/game/cactus1.png";
+import cactus2Image from "~/assets/game/cactus2.png";
+import cactus3Image from "~/assets/game/cactus3.png";
 
 export const runGame = async (canvasId: string) => {
   const game = new Game(canvasId);
@@ -10,13 +13,22 @@ const waitAnimationFrame = () => {
   return new Promise<number>((resolve) => requestAnimationFrame(resolve));
 };
 
+const randomNumber = (min: number, max: number) => {
+  return min + (max - min) * Math.random();
+};
+
+const randomInteger = (min: number, max: number) => {
+  return Math.floor(min + (max - min) * Math.random());
+};
+
 class Game {
-  INITIAL_SPEED_RATE: number = 1;
-  SPEED_RATE_INCREMENT: number = 0.01;
+  INITIAL_SPEED_RATE = 1;
+  SPEED_RATE_INCREMENT = 0.01;
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
   ground: Ground;
   player: Player;
+  cactusPopper: CactusPopper;
   isRunnning: boolean;
   lastTimestamp: number;
   deltaTime: number;
@@ -36,6 +48,7 @@ class Game {
 
     this.ground = new Ground(this.canvas, this.context);
     this.player = new Player(this.canvas, this.context);
+    this.cactusPopper = new CactusPopper(this.canvas, this.context);
 
     this.isRunnning = false;
     this.lastTimestamp = 0;
@@ -95,11 +108,13 @@ class Game {
     this.speedRate += this.SPEED_RATE_INCREMENT * this.deltaTime;
     this.ground.update(this.deltaTime, this.speedRate);
     this.player.update(this.deltaTime, this.speedRate);
+    this.cactusPopper.update(this.deltaTime, this.speedRate);
   }
 
   draw() {
     this.clear();
     this.ground.draw();
+    this.cactusPopper.draw();
     this.player.draw();
   }
 
@@ -136,71 +151,15 @@ class Game {
   }
 }
 
-class Ground {
-  IMAGE_WIDTH: number = 1200;
-  IMAGE_HEIGHT: number = 12;
-  SIZE_WIDTH: number = 1200;
-  SIZE_HEIGHT: number = 12;
-  SLIDE_VELOCITY_X: number = -200;
-  canvas: HTMLCanvasElement;
-  context: CanvasRenderingContext2D;
-  image: HTMLImageElement;
-  positionX: number;
-  positionY: number;
-  velocityX: number;
-
-  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
-    this.canvas = canvas;
-    this.context = context;
-    this.image = new Image();
-    this.image.src = groundImage;
-
-    this.positionX = 0;
-    this.positionY = this.canvas.height - this.SIZE_HEIGHT;
-    this.velocityX = this.SLIDE_VELOCITY_X;
-  }
-
-  update(deltaTime: number, speedRate: number) {
-    this.positionX += this.velocityX * deltaTime * speedRate;
-    if (this.positionX < -this.SIZE_WIDTH) {
-      this.positionX = 0;
-    }
-  }
-
-  draw() {
-    this.context.drawImage(
-      this.image,
-      0,
-      0,
-      this.IMAGE_WIDTH,
-      this.IMAGE_HEIGHT,
-      this.positionX,
-      this.positionY,
-      this.SIZE_WIDTH,
-      this.SIZE_HEIGHT,
-    );
-    this.context.drawImage(
-      this.image,
-      0,
-      0,
-      this.IMAGE_WIDTH,
-      this.IMAGE_HEIGHT,
-      this.positionX + this.SIZE_WIDTH,
-      this.positionY,
-      this.SIZE_WIDTH,
-      this.SIZE_HEIGHT,
-    );
-  }
-}
-
 class Player {
-  IMAGE_WIDTH: number = 70;
-  IMAGE_HEIGHT: number = 100;
-  IMAGE_FRAME: number = 0.2;
-  SIZE_WIDTH: number = 35;
-  SIZE_HEIGHT: number = 50;
-  JUMP_VELOCITY_Y: number = -200;
-  GRAVITY_VELOCITY_Y: number = 10;
+  IMAGE_SOURCE = playerImage;
+  IMAGE_WIDTH = 70;
+  IMAGE_HEIGHT = 100;
+  IMAGE_FRAME = 0.2;
+  SIZE_WIDTH = 35;
+  SIZE_HEIGHT = 50;
+  JUMP_VELOCITY_Y = -250;
+  GRAVITY_VELOCITY_Y = 10;
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
   image: HTMLImageElement;
@@ -215,7 +174,7 @@ class Player {
     this.context = context;
 
     this.image = new Image();
-    this.image.src = playerImage;
+    this.image.src = this.IMAGE_SOURCE;
     this.imageTimer = 0;
     this.imageIndex = 0;
 
@@ -264,5 +223,190 @@ class Player {
 
   collidesWithGround() {
     return this.positionY >= this.canvas.height - this.SIZE_HEIGHT;
+  }
+}
+
+class Ground {
+  IMAGE_SOURCE = groundImage;
+  IMAGE_WIDTH = 1200;
+  IMAGE_HEIGHT = 12;
+  SIZE_WIDTH = 1200;
+  SIZE_HEIGHT = 12;
+  SLIDE_VELOCITY_X = -200;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  image: HTMLImageElement;
+  positionX: number;
+  positionY: number;
+  velocityX: number;
+
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    this.canvas = canvas;
+    this.context = context;
+    this.image = new Image();
+    this.image.src = this.IMAGE_SOURCE;
+
+    this.positionX = 0;
+    this.positionY = this.canvas.height - this.SIZE_HEIGHT;
+    this.velocityX = this.SLIDE_VELOCITY_X;
+  }
+
+  update(deltaTime: number, speedRate: number) {
+    this.positionX += this.velocityX * deltaTime * speedRate;
+    if (this.positionX < -this.SIZE_WIDTH) {
+      this.positionX = 0;
+    }
+  }
+
+  draw() {
+    this.context.drawImage(
+      this.image,
+      0,
+      0,
+      this.IMAGE_WIDTH,
+      this.IMAGE_HEIGHT,
+      this.positionX,
+      this.positionY,
+      this.SIZE_WIDTH,
+      this.SIZE_HEIGHT,
+    );
+    this.context.drawImage(
+      this.image,
+      0,
+      0,
+      this.IMAGE_WIDTH,
+      this.IMAGE_HEIGHT,
+      this.positionX + this.SIZE_WIDTH,
+      this.positionY,
+      this.SIZE_WIDTH,
+      this.SIZE_HEIGHT,
+    );
+  }
+}
+
+class Cactus {
+  IMAGE_WIDTH: number;
+  IMAGE_HEIGHT: number;
+  SIZE_WIDTH: number;
+  SIZE_HEIGHT: number;
+  SLIDE_VELOCITY_X = -200;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  image: HTMLImageElement;
+  positionX: number;
+  positionY: number;
+  velocityX: number;
+
+  constructor(
+    canvas: HTMLCanvasElement,
+    context: CanvasRenderingContext2D,
+    imageSource: string,
+    imageWidth: number,
+    imageHeight: number,
+    sizeWidth: number,
+    sizeHeight: number,
+  ) {
+    this.canvas = canvas;
+    this.context = context;
+
+    this.image = new Image();
+    this.image.src = imageSource;
+
+    this.IMAGE_WIDTH = imageWidth;
+    this.IMAGE_HEIGHT = imageHeight;
+    this.SIZE_WIDTH = sizeWidth;
+    this.SIZE_HEIGHT = sizeHeight;
+
+    this.positionX = this.canvas.width;
+    this.positionY = this.canvas.height - this.SIZE_HEIGHT;
+    this.velocityX = this.SLIDE_VELOCITY_X;
+  }
+
+  update(deltaTime: number, speedRate: number) {
+    this.positionX += this.velocityX * deltaTime * speedRate;
+  }
+
+  draw() {
+    this.context.drawImage(
+      this.image,
+      0,
+      0,
+      this.IMAGE_WIDTH,
+      this.IMAGE_HEIGHT,
+      this.positionX,
+      this.positionY,
+      this.SIZE_WIDTH,
+      this.SIZE_HEIGHT,
+    );
+  }
+
+  collidesWithCanvas() {
+    return this.positionX >= -this.IMAGE_WIDTH;
+  }
+}
+
+class Cactus1 extends Cactus {
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    super(canvas, context, cactus1Image, 48, 100, 24, 50);
+  }
+}
+
+class Cactus2 extends Cactus {
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    super(canvas, context, cactus2Image, 98, 100, 49, 50);
+  }
+}
+
+class Cactus3 extends Cactus {
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    super(canvas, context, cactus3Image, 68, 70, 34, 35);
+  }
+}
+
+class CactusPopper {
+  CACTUS_CLASSES = [Cactus1, Cactus2, Cactus3];
+  MIN_POP_FRAME = 1;
+  MAX_POP_FRAME = 3;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  cactuses: Cactus[] = [];
+  popTimer: number;
+  popFrame: number;
+
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    this.canvas = canvas;
+    this.context = context;
+
+    this.popTimer = 0;
+    this.popFrame = randomNumber(this.MIN_POP_FRAME, this.MAX_POP_FRAME);
+  }
+
+  update(deltaTime: number, speedRate: number) {
+    this.cactuses.forEach((cactus) => {
+      cactus.update(deltaTime, speedRate);
+    });
+    this.cactuses = this.cactuses.filter((cactus) =>
+      cactus.collidesWithCanvas()
+    );
+
+    this.popTimer += deltaTime * speedRate;
+    if (this.popTimer >= this.popFrame) {
+      this.pop();
+      this.popTimer = 0;
+      this.popFrame = randomNumber(this.MIN_POP_FRAME, this.MAX_POP_FRAME);
+    }
+  }
+
+  draw() {
+    this.cactuses.forEach((cactus) => {
+      cactus.draw();
+    });
+  }
+
+  pop() {
+    const index = randomInteger(0, 3);
+    const class_ = this.CACTUS_CLASSES[index];
+    const cactus = new class_(this.canvas, this.context);
+    this.cactuses.push(cactus);
   }
 }
