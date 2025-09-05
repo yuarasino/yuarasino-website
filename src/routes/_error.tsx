@@ -1,9 +1,9 @@
 import { HttpError } from "fresh";
 import { Head } from "fresh/runtime";
 import { SITE_TITLE } from "~/consts.ts";
-import { ErrorArea } from "~/compositions/error/ErrorArea.tsx";
-import { GameSection } from "~/compositions/error/GameSection.tsx";
 import { define } from "~/utils/typing.ts";
+import { GameSectionIsland } from "~/islands/error/GameSectionIsland.tsx";
+import { ErrorArea } from "~/compositions/error/ErrorArea.tsx";
 
 export default define.page(({ error }) => {
   const is404 = error instanceof HttpError && error.status === 404;
@@ -19,7 +19,7 @@ export default define.page(({ error }) => {
       </Head>
       <main>
         <section>
-          <GameSection />
+          <GameSectionIsland />
           <ErrorArea
             title={title}
             description={description}
