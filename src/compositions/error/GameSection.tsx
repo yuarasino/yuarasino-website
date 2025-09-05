@@ -3,7 +3,15 @@ import { cn } from "~/utils/styling.ts";
 import { Container } from "~/components/Container.tsx";
 import { Arranger } from "~/components/Arranger.tsx";
 
-export const GameSection = defineComponent(() => {
+import type { Ref } from "preact";
+
+type Props = {
+  canvasRef: Ref<HTMLCanvasElement>;
+};
+
+export const GameSection = defineComponent<Props>((
+  { canvasRef },
+) => {
   return (
     <section>
       <Container
@@ -36,7 +44,7 @@ export const GameSection = defineComponent(() => {
               class={cn(
                 "h-[150px] w-full max-w-[600px]",
               )}
-              id="game"
+              ref={canvasRef}
             >
               ゲーム画面
             </canvas>
