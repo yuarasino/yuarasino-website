@@ -2,6 +2,7 @@ import { useCallback } from "preact/hooks";
 import groundImage from "~/assets/error/ground.png";
 import cloudImage from "~/assets/error/cloud.png";
 import playerImage from "~/assets/error/player.png";
+import cactusImage from "~/assets/error/cactus.png";
 
 import type { RefCallback } from "preact";
 
@@ -40,6 +41,7 @@ class Game {
   runningTimer: number = 0;
   ground: Ground;
   clouds: Clouds;
+  cactuses: Cactuses;
   player: Player;
 
   constructor(canvas: HTMLCanvasElement) {
@@ -48,6 +50,7 @@ class Game {
 
     this.ground = new Ground(this.canvas, this.context);
     this.clouds = new Clouds(this.canvas, this.context);
+    this.cactuses = new Cactuses(this.canvas, this.context);
     this.player = new Player(this.canvas, this.context);
   }
 
@@ -83,6 +86,7 @@ class Game {
     this.runningTimer = 0;
     this.ground = new Ground(this.canvas, this.context);
     this.clouds = new Clouds(this.canvas, this.context);
+    this.cactuses = new Cactuses(this.canvas, this.context);
     this.player = new Player(this.canvas, this.context);
 
     while (!this.judge()) {
@@ -108,6 +112,7 @@ class Game {
     this.ground.update(deltaTime, timeScale);
     this.clouds.update(deltaTime, timeScale);
     this.player.update(deltaTime, timeScale);
+    this.cactuses.update(deltaTime, timeScale);
   }
 
   draw() {
@@ -115,6 +120,7 @@ class Game {
     this.ground.draw();
     this.clouds.draw();
     this.player.draw();
+    this.cactuses.draw();
   }
 
   fill() {
@@ -298,6 +304,119 @@ class Clouds {
   }
 }
 
+class Cactus {
+  SPRITE_X_LIST: number[] = [0, 25, 75, 150, 167, 201];
+  SPRITE_W_LIST: number[] = [25, 50, 75, 17, 34, 51];
+  SPRITE_H_LIST: number[] = [50, 50, 50, 35, 35, 35];
+  ENTITY_W_LIST: number[] = [25, 50, 75, 17, 34, 51];
+  ENTITY_H_LIST: number[] = [50, 50, 50, 35, 35, 35];
+
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  spriteImage: HTMLImageElement;
+  spriteIndex: number;
+  spriteX: number;
+  spriteY: number = 0;
+  spriteW: number;
+  spriteH: number;
+  entityX: number;
+  entityY: number;
+  entityW: number;
+  entityH: number;
+  velocityX: number = -200;
+
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    this.canvas = canvas;
+    this.context = context;
+
+    this.spriteImage = getSpriteImage(cactusImage);
+    this.spriteIndex = this.getSpriteIndex();
+    this.spriteX = this.SPRITE_X_LIST[this.spriteIndex];
+    this.spriteW = this.SPRITE_W_LIST[this.spriteIndex];
+    this.spriteH = this.SPRITE_H_LIST[this.spriteIndex];
+    this.entityW = this.ENTITY_W_LIST[this.spriteIndex];
+    this.entityH = this.ENTITY_H_LIST[this.spriteIndex];
+    this.entityX = this.canvas.width;
+    this.entityY = this.canvas.height - this.entityH;
+  }
+
+  update(deltaTime: number, timeScale: number) {
+    this.entityX += this.velocityX * deltaTime * timeScale;
+  }
+
+  draw() {
+    this.context.drawImage(
+      this.spriteImage,
+      this.spriteX,
+      this.spriteY,
+      this.spriteW,
+      this.spriteH,
+      this.entityX,
+      this.entityY,
+      this.entityW,
+      this.entityH,
+    );
+  }
+
+  isOnCanvas(): boolean {
+    return this.entityX >= -this.entityW;
+  }
+
+  getSpriteIndex(): number {
+    return getRandomInteger(0, 6);
+  }
+}
+
+class Cactuses {
+  POP_FRAME_MIN: number = 1.5;
+  POP_FRAME_MAX: number = 3;
+
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  entityList: Cactus[] = [];
+  popTimer: number = 0;
+  popFrame: number;
+
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    this.canvas = canvas;
+    this.context = context;
+
+    this.popFrame = this.randomPopFrame();
+    this.pop();
+  }
+
+  update(deltaTime: number, timeScale: number) {
+    this.entityList.forEach((entity) => {
+      entity.update(deltaTime, timeScale);
+    });
+    this.entityList = this.entityList.filter((entity) => {
+      return entity.isOnCanvas();
+    });
+
+    this.popTimer += deltaTime * timeScale;
+    if (this.popTimer >= this.popFrame) {
+      this.popTimer = 0;
+      this.popFrame = this.randomPopFrame();
+      this.pop();
+    }
+  }
+
+  draw() {
+    this.entityList.forEach((entity) => {
+      entity.draw();
+    });
+  }
+
+  pop() {
+    const entity = new Cactus(this.canvas, this.context);
+    this.entityList.push(entity);
+  }
+
+  randomPopFrame(): number {
+    return getRandomNumber(this.POP_FRAME_MIN, this.POP_FRAME_MAX);
+  }
+}
+
 class Player {
   canvas: HTMLCanvasElement;
   JUMP_VELOCITY_Y = -300;
@@ -405,4 +524,8 @@ const getSpriteImage = (src: string): HTMLImageElement => {
 
 const getRandomNumber = (min: number, max: number): number => {
   return min + (max - min) * Math.random();
+};
+
+const getRandomInteger = (min: number, max: number): number => {
+  return Math.floor(getRandomNumber(min, max));
 };
