@@ -1,6 +1,7 @@
 import { useCallback } from "preact/hooks";
 import groundImage from "~/assets/error/ground.png";
 import cloudImage from "~/assets/error/cloud.png";
+import playerImage from "~/assets/error/player.png";
 
 import type { RefCallback } from "preact";
 
@@ -39,6 +40,7 @@ class Game {
   runningTimer: number = 0;
   ground: Ground;
   clouds: Clouds;
+  player: Player;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -46,6 +48,7 @@ class Game {
 
     this.ground = new Ground(this.canvas, this.context);
     this.clouds = new Clouds(this.canvas, this.context);
+    this.player = new Player(this.canvas, this.context);
   }
 
   init() {
@@ -80,6 +83,7 @@ class Game {
     this.runningTimer = 0;
     this.ground = new Ground(this.canvas, this.context);
     this.clouds = new Clouds(this.canvas, this.context);
+    this.player = new Player(this.canvas, this.context);
 
     while (!this.judge()) {
       const deltaTime = await waitForFrame();
@@ -95,7 +99,7 @@ class Game {
   }
 
   judge(): boolean {
-    return this.runningTimer > 5;
+    return false;
   }
 
   update(deltaTime: number) {
@@ -103,12 +107,14 @@ class Game {
     const timeScale = 1 + this.TIME_SCALE_INCREMENT * this.runningTimer;
     this.ground.update(deltaTime, timeScale);
     this.clouds.update(deltaTime, timeScale);
+    this.player.update(deltaTime, timeScale);
   }
 
   draw() {
     this.fill();
     this.ground.draw();
     this.clouds.draw();
+    this.player.draw();
   }
 
   fill() {
@@ -122,6 +128,7 @@ class Game {
   }
 
   jump() {
+    this.player.jump();
   }
 
   async onSpace({ code }: KeyboardEvent) {
@@ -162,7 +169,7 @@ class Ground {
 
   update(deltaTime: number, timeScale: number) {
     this.entityX += this.velocityX * deltaTime * timeScale;
-    if (!this.isInCanvas()) {
+    if (!this.isOnCanvas()) {
       this.entityX = 0;
     }
   }
@@ -183,7 +190,7 @@ class Ground {
     });
   }
 
-  isInCanvas(): boolean {
+  isOnCanvas(): boolean {
     return this.entityX >= -this.entityW;
   }
 }
@@ -236,7 +243,7 @@ class Cloud {
     return getRandomNumber(this.ENTITY_Y_MIN, this.ENTITY_Y_MAX);
   }
 
-  isInCanvas(): boolean {
+  isOnCanvas(): boolean {
     return this.entityX >= -this.entityW;
   }
 }
@@ -264,7 +271,7 @@ class Clouds {
       entity.update(deltaTime, timeScale);
     });
     this.entityList = this.entityList.filter((entity) => {
-      return entity.isInCanvas();
+      return entity.isOnCanvas();
     });
 
     this.popTimer += deltaTime * timeScale;
@@ -288,6 +295,79 @@ class Clouds {
 
   randomPopFrame(): number {
     return getRandomNumber(this.POP_FRAME_MIN, this.POP_FRAME_MAX);
+  }
+}
+
+class Player {
+  canvas: HTMLCanvasElement;
+  JUMP_VELOCITY_Y = -300;
+  GRAVITY_ACCELERATION_Y = 600;
+
+  context: CanvasRenderingContext2D;
+  spriteImage: HTMLImageElement;
+  spriteIndex: number = 0;
+  spriteTimer: number = 0;
+  spriteFrame: number = 0.15;
+  spriteX: number = 0;
+  spriteY: number = 0;
+  spriteW: number = 70;
+  spriteH: number = 100;
+  entityX: number = 20;
+  entityY: number;
+  entityW: number = 42;
+  entityH: number = 60;
+  velocityY: number = 0;
+
+  constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    this.canvas = canvas;
+    this.context = context;
+
+    this.spriteImage = getSpriteImage(playerImage);
+    this.entityY = this.canvas.height - this.entityH;
+  }
+
+  update(deltaTime: number, timeScale: number) {
+    this.velocityY += this.GRAVITY_ACCELERATION_Y * deltaTime * timeScale;
+    this.entityY += this.velocityY * deltaTime * timeScale;
+    if (this.isOnGround()) {
+      this.entityY = this.canvas.height - this.entityH;
+      this.velocityY = 0;
+    }
+
+    this.spriteTimer += deltaTime * timeScale;
+    if (this.spriteTimer >= this.spriteFrame && this.spriteIndex < 4) {
+      this.spriteTimer = 0;
+      this.spriteIndex = (this.spriteIndex + 1) % 4;
+      this.spriteX = this.spriteW * this.spriteIndex;
+    }
+  }
+
+  draw() {
+    this.context.drawImage(
+      this.spriteImage,
+      this.spriteX,
+      this.spriteY,
+      this.spriteW,
+      this.spriteH,
+      this.entityX,
+      this.entityY,
+      this.entityW,
+      this.entityH,
+    );
+  }
+
+  jump() {
+    if (this.isOnGround()) {
+      this.velocityY = this.JUMP_VELOCITY_Y;
+    }
+  }
+
+  hurt() {
+    this.spriteIndex = 4;
+  }
+
+  isOnGround(): boolean {
+    return this.entityY >= this.canvas.height - this.entityH;
   }
 }
 

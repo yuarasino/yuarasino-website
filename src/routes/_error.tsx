@@ -2,6 +2,7 @@ import { HttpError } from "fresh";
 import { Head } from "fresh/runtime";
 import { SITE_TITLE } from "~/consts.ts";
 import { define } from "~/utils/typing.ts";
+import { cn } from "~/utils/styling.ts";
 import { GameSectionIsland } from "~/islands/error/GameSectionIsland.tsx";
 import { ErrorArea } from "~/compositions/error/ErrorArea.tsx";
 
@@ -17,7 +18,12 @@ export default define.page(({ error }) => {
       <Head>
         <title>{title} | {SITE_TITLE}</title>
       </Head>
-      <main>
+      <main
+        class={cn(
+          "select-none",
+          "touch-manipulation",
+        )}
+      >
         <section>
           <GameSectionIsland />
           <ErrorArea
