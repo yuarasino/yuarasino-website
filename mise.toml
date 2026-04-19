@@ -1,5 +1,7 @@
 [tools]
 bun = "latest"
+hk = "latest"
+pkl = "latest"
 
 [tasks]
 dev = "bun run --bun astro dev"
@@ -7,3 +9,9 @@ build = "bun run --bun astro build"
 preview = "bun run --bun astro preview"
 check = "bun run --bun --parallel check:astro check:svelte check:biome check:knip"
 fix = "bun run --bun --sequential fix:biome"
+
+[env]
+HK_MISE = 1
+
+[hooks]
+postinstall = "hk install --mise"

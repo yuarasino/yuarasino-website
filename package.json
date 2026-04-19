@@ -8,9 +8,9 @@
     "preview": "astro preview",
     "check:astro": "astro check",
     "check:svelte": "svelte-check",
-    "check:biome": "biome check",
-    "fix:biome": "biome check --write",
-    "check:knip": "knip",
+    "check:biome": "biome check --no-errors-on-unmatched",
+    "fix:biome": "biome check --no-errors-on-unmatched --write",
+    "check:knip": "knip --no-progress",
     "check:commit": "commitlint --edit"
   },
   "imports": {

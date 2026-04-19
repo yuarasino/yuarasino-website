@@ -1,0 +1,49 @@
+amends "package://github.com/jdx/hk/releases/download/v1.42.0/hk@1.42.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.42.0/hk@1.42.0#/Builtins.pkl"
+
+local linters = new Mapping<String, Step> {
+  ["mise"] = (Builtins.mise) {
+    shell = null
+  }
+  ["pkl"] = (Builtins.pkl_format) {
+    shell = null
+  }
+  ["markdown"] = (Builtins.markdown_lint) {
+    shell = null
+  }
+  ["biome"] {
+    glob = "**/*.{js,jsx,ts,tsx,json,html,css,astro,svelte}"
+    check = "bun run --bun check:biome -- {{ files }}"
+    fix = "bun run --bun fix:biome -- {{ files }}"
+  }
+  ["astro"] {
+    glob = "**/*.astro"
+    check = "bun run --bun check:astro -- {{ files }}"
+  }
+  ["svelte"] {
+    glob = "**/*.svelte"
+    check = "bun run --bun check:svelte -- {{ files }}"
+  }
+  ["knip"] {
+    workspace_indicator = "package.json"
+    check = "bun run --bun check:knip -- --directory {{ workspace }}"
+  }
+}
+
+hooks {
+  ["commit-msg"] {
+    steps {
+      ["commit"] {
+        check = "bun run --bun check:commit"
+      }
+    }
+  }
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps = linters
+  }
+  ["pre-push"] {
+    steps = linters
+  }
+}
