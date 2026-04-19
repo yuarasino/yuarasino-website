@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "seatonjiang.gitmoji-vscode"
+    "seatonjiang.gitmoji-vscode",
+    "editorconfig.editorconfig"
   ]
 }
