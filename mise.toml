@@ -1,2 +1,7 @@
 [tools]
 bun = "latest"
+
+[tasks]
+dev = "bun run --bun astro dev"
+build = "bun run --bun astro build"
+preview = "bun run --bun astro preview"

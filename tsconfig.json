@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "@tsconfig/bun/tsconfig.json",
+    "astro/tsconfigs/strictest"
+  ],
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "types": [
+      "bun"
+    ]
+  }
+}

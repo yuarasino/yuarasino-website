@@ -2,6 +2,7 @@
   "recommendations": [
     "seatonjiang.gitmoji-vscode",
     "editorconfig.editorconfig",
-    "oven.bun-vscode"
+    "oven.bun-vscode",
+    "astro-build.astro-vscode"
   ]
 }
