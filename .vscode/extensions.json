@@ -3,6 +3,7 @@
     "seatonjiang.gitmoji-vscode",
     "editorconfig.editorconfig",
     "oven.bun-vscode",
-    "astro-build.astro-vscode"
+    "astro-build.astro-vscode",
+    "svelte.svelte-vscode"
   ]
 }
