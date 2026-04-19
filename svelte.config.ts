@@ -3,9 +3,7 @@ import {
   vitePreprocess,
 } from "@sveltejs/vite-plugin-svelte";
 
-function defineConfig(config: SvelteConfig) {
-  return config;
-}
+const defineConfig = (config: SvelteConfig): SvelteConfig => config;
 
 export default defineConfig({
   preprocess: vitePreprocess(),
