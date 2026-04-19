@@ -5,6 +5,7 @@
     "oven.bun-vscode",
     "astro-build.astro-vscode",
     "svelte.svelte-vscode",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "biomejs.biome"
   ]
 }

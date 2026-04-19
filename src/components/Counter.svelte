@@ -2,4 +2,6 @@
 let count = $state(0);
 </script>
 
-<button class="bg-gray-300" onclick={() => count++}>Count: {count}</button>
+<button class="bg-gray-300" type="button" onclick={() => count++}>
+  Count: {count}
+</button>

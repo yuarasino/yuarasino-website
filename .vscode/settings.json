@@ -1,7 +1,6 @@
 {
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
+  "editor.defaultFormatter": "biomejs.biome",
   "files.associations": {
     "*.css": "tailwindcss"
   }
