@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "seatonjiang.gitmoji-vscode",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "oven.bun-vscode"
   ]
 }
