@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignoreDependencies": ["@iconify/json"],
+  "astro": {
+    "config": ["astro.config.ts"]
+  },
+  "svelte": {
+    "config": ["svelte.config.ts"]
+  }
+}
